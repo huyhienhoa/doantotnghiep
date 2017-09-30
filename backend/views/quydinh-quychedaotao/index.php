@@ -7,7 +7,7 @@ use yii\widgets\Pjax;
 /* @var $searchModel common\models\searchs\QuydinhQuychedaotaoSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Quydinh Quychedaotaos';
+$this->title = 'Quy định-Quy chế đào tạo';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="quydinh-quychedaotao-index">
@@ -17,7 +17,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <p>
-        <?= Html::a('Create Quydinh Quychedaotao', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Thêm tài liệu', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
     <?= GridView::widget([
@@ -28,13 +28,9 @@ $this->params['breadcrumbs'][] = $this->title;
 
             'id',
             'name',
-            'ngaybanhanh',
             'soquyetdinh',
-            'created_at',
-            //'updated_at',
-            //'filedinhkem',
-            //'namhoc_id',
-            //'loaitailieu_id',
+            'filedinhkem',
+            'namhoc_id',
 
             ['class' => 'yii\grid\ActionColumn'],
         ],

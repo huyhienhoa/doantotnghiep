@@ -7,7 +7,7 @@ use yii\widgets\DetailView;
 /* @var $model common\models\QuydinhQuychedaotao */
 
 $this->title = $model->name;
-$this->params['breadcrumbs'][] = ['label' => 'Quydinh Quychedaotaos', 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => 'Quy định-Quy chế đào tạo', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="quydinh-quychedaotao-view">
@@ -15,20 +15,19 @@ $this->params['breadcrumbs'][] = $this->title;
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
-        <?= Html::a('Update', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
-        <?= Html::a('Delete', ['delete', 'id' => $model->id], [
+        <?= Html::a('Cập nhật', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
+        <?= Html::a('Xóa', ['delete', 'id' => $model->id], [
             'class' => 'btn btn-danger',
             'data' => [
-                'confirm' => 'Are you sure you want to delete this item?',
+                'confirm' => 'Bạn có chắc chắn muốn xóa bản ghi này?',
                 'method' => 'post',
             ],
         ]) ?>
     </p>
-
+    <?php $model->ngaybanhanh = \common\models\myFuncs::yearMonthDaytoDayMonthYear($model->ngaybanhanh)?>
     <?= DetailView::widget([
         'model' => $model,
         'attributes' => [
-            'id',
             'name',
             'ngaybanhanh',
             'soquyetdinh',

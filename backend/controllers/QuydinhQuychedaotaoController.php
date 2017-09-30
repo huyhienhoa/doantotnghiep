@@ -5,6 +5,7 @@ namespace backend\controllers;
 use Yii;
 use common\models\QuydinhQuychedaotao;
 use common\models\searchs\QuydinhQuychedaotaoSearch;
+use yii\db\Expression;
 use yii\helpers\Url;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
@@ -65,15 +66,8 @@ class QuydinhQuychedaotaoController extends Controller
     public function actionCreate()
     {
         $model = new QuydinhQuychedaotao();
-
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-//            return $this->redirect(['view', 'id' => $model->id]);
-            $searchModel = new QuydinhQuychedaotaoSearch();
-            $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
-            return $this->render('index', [
-                'searchModel' => $searchModel,
-                'dataProvider' => $dataProvider,
-            ]);
+            return $this->redirect(['view', 'id' => $model->id]);
         }
 
         return $this->render('create', [
@@ -130,12 +124,11 @@ class QuydinhQuychedaotaoController extends Controller
     }
     
     public function actionXoafile($id){
-        $quydinh = QuydinhQuychedaotao::findOne($id);
-        $file = dirname(dirname(__DIR__)).'/files'.$quydinh->filedinhkem;
-        if(is_file($file)){
+        $tailieu = QuydinhQuychedaotao::findOne($id);
+        $file = dirname(dirname(__DIR__)).'/files/'.$tailieu->filedinhkem;
+        if(is_file($file))
             unlink($file);
-        }
-        $quydinh->updateAttributes(['filedinhkem'=>'nofile.jpg']);
+        $tailieu->updateAttributes(['filedinhkem'=>'nofile.jpg']);
         $this->redirect(Url::toRoute(['quydinh-quychedaotao/update','id'=>$id]));
     }
 }
