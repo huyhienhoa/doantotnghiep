@@ -30,7 +30,7 @@ class QuydinhQuychedaotaoController extends Controller
             ],
         ];
     }
-
+//ddaaadfjladf;jasd;jfa
     /**
      * Lists all QuydinhQuychedaotao models.
      * @return mixed
