@@ -30,7 +30,7 @@ class QuydinhQuychedaotaoController extends Controller
             ],
         ];
     }
-
+//đây là dòng lỗi
     /**
      * Lists all QuydinhQuychedaotao models.
      * @return mixed
