@@ -38,8 +38,10 @@ class QuydinhQuychedaotao extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['name','namhoc_id','ngaybanhanh','filedinhkem'], 'required'],
-            [['created_at', 'updated_at'], 'safe'],
+            [['name','namhoc_id','ngaybanhanh'], 'required',
+                'message'=>'{attribute} không được để trống !'
+            ],
+            [['filedinhkem','created_at', 'updated_at'], 'safe'],
             [['namhoc_id', 'loaitailieu_id'], 'integer'],
             [['name'], 'string', 'max' => 200],
             [['soquyetdinh'], 'string', 'max' => 25],
