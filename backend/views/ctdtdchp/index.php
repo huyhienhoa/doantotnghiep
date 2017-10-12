@@ -23,6 +23,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
+        'summary'=>'Trang {page}/{pageCount}, Số lượng bản ghi : {totalCount}',
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 

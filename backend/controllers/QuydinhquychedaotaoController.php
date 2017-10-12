@@ -29,7 +29,7 @@ class QuydinhquychedaotaoController extends Controller
             ],
         ];
     }
-
+//đây là dòng lỗi
     /**
      * Lists all QuydinhQuychedaotao models.
      * @return mixed
@@ -38,8 +38,14 @@ class QuydinhquychedaotaoController extends Controller
     {
         $searchModel = new QuydinhQuychedaotaoSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
-
-        return $this->render('index', [
+        $dataProvider->setSort([
+            'attributes'=>[
+                'name',
+                'id'
+            ],
+            'defaultOrder'=>['id'=>SORT_DESC]
+        ]);
+            return $this->render('index', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
         ]);
