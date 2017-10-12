@@ -5,10 +5,10 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model common\models\Giangvien */
 
-$this->title = 'Update Giangvien: {nameAttribute}';
-$this->params['breadcrumbs'][] = ['label' => 'Giangviens', 'url' => ['index']];
-$this->params['breadcrumbs'][] = ['label' => $model->id, 'url' => ['view', 'id' => $model->id]];
-$this->params['breadcrumbs'][] = 'Update';
+$this->title = 'Cập nhật bản ghi: '.$model->tengiangvien;
+$this->params['breadcrumbs'][] = ['label' => 'Giảng viên', 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => $model->tengiangvien, 'url' => ['view', 'id' => $model->id]];
+$this->params['breadcrumbs'][] = 'Cập nhật';
 ?>
 <div class="giangvien-update">
 

@@ -32,6 +32,7 @@ class Hinhthucdaotao extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
+            [['name'], 'required', 'message' => 'Chưa điền {attribute}'],
             [['name'], 'string', 'max' => 100],
         ];
     }
@@ -43,7 +44,7 @@ class Hinhthucdaotao extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'name' => 'Name',
+            'name' => 'Tên hình thức đào tạo',
         ];
     }
 

@@ -24,6 +24,7 @@ AppAsset::register($this);
     <?php $this->head() ?>
 </head>
 <body>
+
 <?php $this->beginBody() ?>
 
 <div class="wrap">
@@ -35,23 +36,36 @@ AppAsset::register($this);
             'class' => 'navbar-inverse navbar-fixed-top',
         ],
     ]);
-    $menuItems = [
-        ['label' => 'Home', 'url' => ['/site/index']],
-    ];
+    
     if (Yii::$app->user->isGuest) {
-        $menuItems[] = ['label' => 'Login', 'url' => ['/site/login']];
+        $menuItems = [
+            ['label' => 'Trang chủ', 'url' => ['/site/index']],
+        ];
+        $menuItems[] = ['label' => 'Đăng nhập', 'url' => ['/site/login']];
     } else {
+        $menuItems[] = ['label' => 'Quy định-Quy chế', 'url' => ['quydinhquychedaotao/index']];
+        $menuItems[] = ['label' => 'Thông báo-Quyết định', 'url' => ['thongbaoquyetdinh/index']];
+//        $menuItems[] = '<li>'
+//        . Html::beginForm(['/site/search'],'get',['class'=>'input-group col-md-2'])
+//        . Html::textInput('search',NULL,['class'=>'form-control'])
+//        .'<span class="input-group-btn">'
+//        . Html::submitButton('<i class="glyphicon glyphicon-search"></i>',['class'=>'btn btn-default'])
+//        .'</span>'
+//        . Html::endForm()
+//        . '</li>';
         $menuItems[] = '<li>'
             . Html::beginForm(['/site/logout'], 'post')
             . Html::submitButton(
-                'Logout (' . Yii::$app->user->identity->username . ')',
+                'Đăng xuất (' . Yii::$app->user->identity->username . ')',
                 ['class' => 'btn btn-link logout']
             )
             . Html::endForm()
             . '</li>';
+
+
     }
     echo Nav::widget([
-        'options' => ['class' => 'navbar-nav navbar-right'],
+        'options' => ['class' => 'navbar-nav navbar-left'],
         'items' => $menuItems,
     ]);
     NavBar::end();
@@ -68,9 +82,9 @@ AppAsset::register($this);
 
 <footer class="footer">
     <div class="container">
-        <p class="pull-left">&copy; My Company <?= date('Y') ?></p>
+        <p class="pull-left">&copy; Quản lý tài liệu theo tiêu chuẩn ISO <?= date('Y') ?></p>
 
-        <p class="pull-right"><?= Yii::powered() ?></p>
+        <p class="pull-right">Đại học Hàng Hải Việt Nam</p>
     </div>
 </footer>
 

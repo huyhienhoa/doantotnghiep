@@ -5,10 +5,10 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model common\models\Bomon */
 
-$this->title = 'Update Bomon: {nameAttribute}';
-$this->params['breadcrumbs'][] = ['label' => 'Bomons', 'url' => ['index']];
-$this->params['breadcrumbs'][] = ['label' => $model->id, 'url' => ['view', 'id' => $model->id]];
-$this->params['breadcrumbs'][] = 'Update';
+$this->title = 'Cập nhật bản ghi: '.$model->tenbomon;
+$this->params['breadcrumbs'][] = ['label' => 'Bộ môn', 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => $model->tenbomon, 'url' => ['view', 'id' => $model->id]];
+$this->params['breadcrumbs'][] = 'Cập nhật';
 ?>
 <div class="bomon-update">
 

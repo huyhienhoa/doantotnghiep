@@ -7,7 +7,7 @@ use yii\widgets\Pjax;
 /* @var $searchModel common\models\searchs\TrinhdoSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Trinhdos';
+$this->title = 'Trình độ';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="trinhdo-index">
@@ -17,16 +17,17 @@ $this->params['breadcrumbs'][] = $this->title;
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <p>
-        <?= Html::a('Create Trinhdo', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('<span class="glyphicon glyphicon-plus"></span> Thêm mới', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
+        'summary'=>'Trang {page}/{pageCount}, Số lượng bản ghi : {totalCount}',
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
-            'id',
+//            'id',
             'name',
 
             ['class' => 'yii\grid\ActionColumn'],

@@ -8,14 +8,13 @@ use Yii;
  * This is the model class for table "{{%namhoc}}".
  *
  * @property int $id
- * @property int $namhoc
+ * @property string $name
  *
  * @property Bangphanconggiangday[] $bangphanconggiangdays
  * @property Bangtheodoiketquahoctap[] $bangtheodoiketquahoctaps
  * @property Congtacnghiencuukh[] $congtacnghiencuukhs
  * @property Debaitaplon[] $debaitaplons
  * @property Decuongontap[] $decuongontaps
- * @property Hocky[] $hockies
  * @property Hopdonggiangday[] $hopdonggiangdays
  * @property Ketquadanhgiahocphan[] $ketquadanhgiahocphans
  * @property Khenthuong[] $khenthuongs
@@ -44,7 +43,8 @@ class Namhoc extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['namhoc'], 'integer'],
+            [['name'], 'required', 'message' => 'Chưa điền {attribute}'],
+            [['name'], 'string', 'max' => 20],
         ];
     }
 
@@ -55,7 +55,7 @@ class Namhoc extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'namhoc' => 'Namhoc',
+            'name' => 'Tên năm học',
         ];
     }
 
@@ -97,14 +97,6 @@ class Namhoc extends \yii\db\ActiveRecord
     public function getDecuongontaps()
     {
         return $this->hasMany(Decuongontap::className(), ['namhoc_id' => 'id']);
-    }
-
-    /**
-     * @return \yii\db\ActiveQuery
-     */
-    public function getHockies()
-    {
-        return $this->hasMany(Hocky::className(), ['namhoc_id' => 'id']);
     }
 
     /**

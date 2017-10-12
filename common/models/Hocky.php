@@ -9,13 +9,11 @@ use Yii;
  *
  * @property int $id
  * @property string $name
- * @property int $namhoc_id
  *
  * @property Bangphanconggiangday[] $bangphanconggiangdays
  * @property Bangtheodoiketquahoctap[] $bangtheodoiketquahoctaps
  * @property Debaitaplon[] $debaitaplons
  * @property Decuongontap[] $decuongontaps
- * @property Namhoc $namhoc
  * @property Ketquadanhgiahocphan[] $ketquadanhgiahocphans
  * @property Lichgiangday[] $lichgiangdays
  * @property Lichthi[] $lichthis
@@ -39,11 +37,8 @@ class Hocky extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['namhoc_id'], 'required'],
-            [['id', 'namhoc_id'], 'integer'],
-            [['name'], 'string'],
-            [['id'], 'unique'],
-            [['namhoc_id'], 'exist', 'skipOnError' => true, 'targetClass' => Namhoc::className(), 'targetAttribute' => ['namhoc_id' => 'id']],
+            [['name'], 'required', 'message' => 'Chưa điền {attribute}'],
+            [['name'], 'string', 'max' => 20],
         ];
     }
 
@@ -54,8 +49,7 @@ class Hocky extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'name' => 'Name',
-            'namhoc_id' => 'Namhoc ID',
+            'name' => 'Tên học kỳ',
         ];
     }
 
@@ -89,14 +83,6 @@ class Hocky extends \yii\db\ActiveRecord
     public function getDecuongontaps()
     {
         return $this->hasMany(Decuongontap::className(), ['hocky_id' => 'id']);
-    }
-
-    /**
-     * @return \yii\db\ActiveQuery
-     */
-    public function getNamhoc()
-    {
-        return $this->hasOne(Namhoc::className(), ['id' => 'namhoc_id']);
     }
 
     /**

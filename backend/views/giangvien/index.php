@@ -7,7 +7,7 @@ use yii\grid\GridView;
 /* @var $searchModel common\models\searchs\GiangvienSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Giangviens';
+$this->title = 'Giảng viên';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="giangvien-index">
@@ -16,7 +16,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <p>
-        <?= Html::a('Create Giangvien', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('<span class="glyphicon glyphicon-plus"></span> Thêm mới', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
     <?= GridView::widget([
@@ -28,7 +28,13 @@ $this->params['breadcrumbs'][] = $this->title;
             'id',
             'magiangvien',
             'tengiangvien',
-            'bomon_id',
+            [
+                'attribute'=>'bomon_id',
+                'label'=>'Bộ môn',
+                'value'=>function($data){
+                    return $data->bomon->tenbomon;
+                },
+            ],
 
             ['class' => 'yii\grid\ActionColumn'],
         ],

@@ -2,6 +2,14 @@
 
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
+use yii\helpers\Url;
+use common\models\Giangvien;
+use common\models\Hinhthucdaotao;
+use common\models\Trinhdo;
+use common\models\Monhoc;
+use common\models\Hocky;
+use common\models\Namhoc;
+use yii\helpers\ArrayHelper;
 
 /* @var $this yii\web\View */
 /* @var $model common\models\Bangtheodoiketquahoctap */
@@ -10,34 +18,85 @@ use yii\widgets\ActiveForm;
 
 <div class="bangtheodoiketquahoctap-form">
 
-    <?php $form = ActiveForm::begin(); ?>
+    <?php $form = ActiveForm::begin([
+        'options'=>['enctype'=>'multipart/form-data']
+    ]); ?>
 
-    <?= $form->field($model, 'name')->textInput(['maxlength' => true]) ?>
+    <div class="row">
+        <div class="col-md-8">
+            <?= $form->field($model, 'name')->textInput(['maxlength' => true]) ?>
+        </div>
+        <div class="col-md-4">
+            <?= $form->field($model, 'nhomhocphan')->textInput(['maxlength' => true]) ?>
+        </div>
+    </div>
 
-    <?= $form->field($model, 'created_at')->textInput() ?>
+    <div class="row">
+        <div class="col-md-4">
+            <?= $form->field($model, 'giangvien_id')->dropDownList(
+                ArrayHelper::map(Giangvien::find()->all(),'id','tengiangvien'),['prompt'=>'Chọn...']
+            ) ?>
+        </div>
+        <div class="col-md-4">
+            <?= $form->field($model, 'hinhthucdaotao_id')->dropDownList(
+                ArrayHelper::map(Hinhthucdaotao::find()->all(),'id','name'),['prompt'=>'Chọn...']
+            ) ?>
+        </div>
+        <div class="col-md-4">
+            <?= $form->field($model, 'trinhdo_id')->dropDownList(
+                ArrayHelper::map(Trinhdo::find()->all(),'id','name'),['prompt'=>'Chọn...']
+            ) ?>
+        </div>
+    </div>
 
-    <?= $form->field($model, 'updated_at')->textInput() ?>
+    <div class="row">
+        <div class="col-md-4">
+            <?= $form->field($model, 'monhoc_id')->dropDownList(
+                ArrayHelper::map(Monhoc::find()->all(),'id','tenmonhoc'),['prompt'=>'Chọn...']
+            ) ?>
+        </div>
+        <div class="col-md-4">
+            <?= $form->field($model, 'hocky_id')->dropDownList(
+                ArrayHelper::map(Hocky::find()->all(),'id','name'),['prompt'=>'Chọn...']
+            ) ?>
+        </div>
+        <div class="col-md-4">
+            <?= $form->field($model, 'namhoc_id')->dropDownList(
+                ArrayHelper::map(Namhoc::find()->all(),'id','name'),['prompt'=>'Chọn...']
+            ) ?>
+        </div>
+    </div>
 
-    <?= $form->field($model, 'nhomhocphan')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'filedinhkem')->fileInput() ?>
 
-    <?= $form->field($model, 'filedinhkem')->textInput(['maxlength' => true]) ?>
+    <?php if(!$model->isNewRecord): ?>
+        <p><?=$model->filedinhkem;?></p>
+        <?php if($model->filedinhkem!='nofile.jpg'):?>
+            <?=Html::a('<i class="glyphicon glyphicon-trash"></i>',Url::toRoute(['bangtheodoiketquahoctap/xoafile','id'=>$model->id]),['class'=>'text-danger']) ?>
+        <?php endif;?>
 
-    <?= $form->field($model, 'giangvien_id')->textInput() ?>
+    <?php endif;?>
 
-    <?= $form->field($model, 'hinhthucdaotao_id')->textInput() ?>
 
-    <?= $form->field($model, 'trinhdo_id')->textInput() ?>
 
-    <?= $form->field($model, 'monhoc_id')->textInput() ?>
 
-    <?= $form->field($model, 'hocky_id')->textInput() ?>
 
-    <?= $form->field($model, 'namhoc_id')->textInput() ?>
 
-    <?= $form->field($model, 'loaitailieu_id')->textInput() ?>
+
+
+
+
+
+
+
+
+
+
+
+
 
     <div class="form-group">
-        <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>
+        <?= Html::submitButton('<span class="glyphicon glyphicon-floppy-save"></span> Lưu lại', ['class' => 'btn btn-success']) ?>
     </div>
 
     <?php ActiveForm::end(); ?>

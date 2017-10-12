@@ -7,7 +7,7 @@ use yii\widgets\Pjax;
 /* @var $searchModel common\models\searchs\BomonSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Bomons';
+$this->title = 'Bộ môn';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="bomon-index">
@@ -17,7 +17,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <p>
-        <?= Html::a('Create Bomon', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('<span class="glyphicon glyphicon-plus"></span> Thêm mới', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
     <?= GridView::widget([
@@ -26,10 +26,16 @@ $this->params['breadcrumbs'][] = $this->title;
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
-            'id',
+//            'id',
             'tenbomon',
             'mabomon',
-            'khoa_id',
+            [
+                'attribute'=>'khoa_id',
+                'label'=>'Khoa',
+                'value'=>function($data){
+                    return $data->khoa->tenkhoa;
+                },
+            ],
 
             ['class' => 'yii\grid\ActionColumn'],
         ],

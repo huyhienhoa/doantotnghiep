@@ -38,7 +38,7 @@ class Bomon extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['tenbomon', 'mabomon', 'khoa_id'], 'required'],
+            [['tenbomon', 'mabomon', 'khoa_id'], 'required', 'message' => 'Chưa điền {attribute}'],
             [['khoa_id'], 'integer'],
             [['tenbomon'], 'string', 'max' => 100],
             [['mabomon'], 'string', 'max' => 10],
@@ -55,9 +55,9 @@ class Bomon extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'tenbomon' => 'Tenbomon',
-            'mabomon' => 'Mabomon',
-            'khoa_id' => 'Khoa ID',
+            'tenbomon' => 'Tên bộ môn',
+            'mabomon' => 'Mã bộ môn',
+            'khoa_id' => 'Khoa',
         ];
     }
 

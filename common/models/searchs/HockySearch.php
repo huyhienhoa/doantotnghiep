@@ -18,7 +18,7 @@ class HockySearch extends Hocky
     public function rules()
     {
         return [
-            [['id', 'namhoc_id'], 'integer'],
+            [['id'], 'integer'],
             [['name'], 'safe'],
         ];
     }
@@ -60,7 +60,6 @@ class HockySearch extends Hocky
         // grid filtering conditions
         $query->andFilterWhere([
             'id' => $this->id,
-            'namhoc_id' => $this->namhoc_id,
         ]);
 
         $query->andFilterWhere(['like', 'name', $this->name]);

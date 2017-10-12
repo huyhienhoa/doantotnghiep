@@ -121,4 +121,24 @@ class BangtheodoiketquahoctapController extends Controller
 
         throw new NotFoundHttpException('The requested page does not exist.');
     }
+
+    public function actionXoafile($id){
+        $tailieu = Bangtheodoiketquahoctap::findOne($id);
+        $file = dirname(dirname(__DIR__)).'/files/'.$tailieu->filedinhkem;
+        if(is_file($file))
+            unlink($file);
+        $tailieu->updateAttributes(['filedinhkem'=>'nofile.jpg']);
+        $this->redirect(Url::toRoute(['bangtheodoiketquahoctap/update','id'=>$id]));
+    }
+
+    public function actionDownload($id){
+        $model = $this->findModel($id);
+        $uploadpath = dirname(dirname(__DIR__)).'/files/'.$model->filedinhkem;
+        if (file_exists($uploadpath)){
+            Yii::$app->response->sendFile($uploadpath);
+        }
+        else{
+            return $this->redirect('download404');
+        }
+    }
 }

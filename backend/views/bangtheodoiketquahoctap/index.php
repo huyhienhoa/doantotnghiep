@@ -7,7 +7,7 @@ use yii\widgets\Pjax;
 /* @var $searchModel common\models\searchs\BangtheodoiketquahoctapSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Bangtheodoiketquahoctaps';
+$this->title = 'BẢNG THEO DÕI KẾT QUẢ HỌC TẬP';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="bangtheodoiketquahoctap-index">
@@ -17,7 +17,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <p>
-        <?= Html::a('Create Bangtheodoiketquahoctap', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('<span class="glyphicon glyphicon-plus"></span> Thêm mới', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
     <?= GridView::widget([
@@ -26,16 +26,23 @@ $this->params['breadcrumbs'][] = $this->title;
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
-            'id',
+//            'id',
             'name',
-            'created_at',
-            'updated_at',
+//            'created_at',
+//            'updated_at',
             'nhomhocphan',
-            //'filedinhkem',
+            [
+                'attribute'=>'monhoc_id',
+                'label'=>'Môn học',
+                'value'=>function($data){
+                    return $data->monhoc->tenmonhoc;
+                },
+            ],
+            'filedinhkem',
             //'giangvien_id',
             //'hinhthucdaotao_id',
             //'trinhdo_id',
-            //'monhoc_id',
+
             //'hocky_id',
             //'namhoc_id',
             //'loaitailieu_id',
