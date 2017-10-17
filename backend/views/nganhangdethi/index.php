@@ -82,7 +82,6 @@ $this->params['breadcrumbs'][] = $this->title;
                 'header' => '<p class="text-center">Xóa</p>',
                 'visible' => in_array(Yii::$app->user->identity->role, ['admin', 'trưởng bộ môn'])
             ],
-            ['class' => 'yii\grid\ActionColumn'],
         ],
     ]); ?>
     <?php Pjax::end(); ?>
