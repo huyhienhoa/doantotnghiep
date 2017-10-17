@@ -3,6 +3,7 @@ namespace frontend\controllers;
 
 use Yii;
 use yii\base\InvalidParamException;
+use yii\swiftmailer\Mailer;
 use yii\web\BadRequestHttpException;
 use yii\web\Controller;
 use yii\filters\VerbFilter;
@@ -209,5 +210,25 @@ class SiteController extends Controller
         return $this->render('resetPassword', [
             'model' => $model,
         ]);
+    }
+
+    public function actionTestmail(){
+        //$mailer = new Mailer();
+//        $mailer->setTransport([
+//            'class' => 'Swift_SmtpTransport',
+//            'host' => 'smtp.gmail.com',
+//            'username' => 'huyhienhoacnt@gmail.com',
+//            'password' => 'toisekiemduoc50trieu1thang',
+//            'post' => '587',
+//            'encryption' => 'tls',
+//
+//        ]);
+
+        Yii::$app->mailer->compose()
+            ->setFrom('huyhienhoacnt@gmail.com')
+            ->setTo('huypv@nal.vn')
+            ->setHtmlBody('<h1>Day la test</h1>')
+            ->setSubject('Noi dung gui')
+            ->send();
     }
 }

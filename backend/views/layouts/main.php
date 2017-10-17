@@ -38,21 +38,23 @@ AppAsset::register($this);
     ]);
     
     if (Yii::$app->user->isGuest) {
-        $menuItems = [
-            ['label' => 'Trang chủ', 'url' => ['/site/index']],
-        ];
+        
         $menuItems[] = ['label' => 'Đăng nhập', 'url' => ['/site/login']];
     } else {
         $menuItems[] = ['label' => 'Quy định-Quy chế', 'url' => ['quydinhquychedaotao/index']];
         $menuItems[] = ['label' => 'Thông báo-Quyết định', 'url' => ['thongbaoquyetdinh/index']];
-//        $menuItems[] = '<li>'
-//        . Html::beginForm(['/site/search'],'get',['class'=>'input-group col-md-2'])
-//        . Html::textInput('search',NULL,['class'=>'form-control'])
-//        .'<span class="input-group-btn">'
-//        . Html::submitButton('<i class="glyphicon glyphicon-search"></i>',['class'=>'btn btn-default'])
-//        .'</span>'
-//        . Html::endForm()
-//        . '</li>';
+        $menuItems[] = '<li style="margin-top: 10px;">'
+        . Html::beginForm(['/site/search'],'get',['class'=>'input-group'])
+        . Html::textInput('search',NULL,['class'=>'form-control','style'=>'border-radius:5px'])
+        . Html::submitButton('<i class="glyphicon glyphicon-search"></i>',['class'=>'btn btn-default','style'=>'position: absolute;
+    right: 0px;
+    top:2px;
+    z-index: 9999;
+    background: transparent;
+    border: none;
+    '])
+        . Html::endForm()
+        . '</li>';
         $menuItems[] = '<li>'
             . Html::beginForm(['/site/logout'], 'post')
             . Html::submitButton(

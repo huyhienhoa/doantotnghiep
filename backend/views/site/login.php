@@ -23,8 +23,12 @@ $this->params['breadcrumbs'][] = $this->title;
 
                 <?= $form->field($model, 'rememberMe')->checkbox()->label('Nhớ mật khẩu của tôi') ?>
 
+                <div style="color:#999;margin:1em 0">
+                    <?= Html::a('Bạn quên mật khẩu?', ['site/request-password-reset']) ?>.
+                </div>
+            
                 <div class="form-group">
-                    <?= Html::submitButton('Đăng nhập', ['class' => 'btn btn-primary', 'name' => 'login-button']) ?>
+                    <?= Html::submitButton('<i class="glyphicon glyphicon-user"></i> Đăng nhập', ['class' => 'btn btn-primary', 'name' => 'login-button']) ?>
                 </div>
 
             <?php ActiveForm::end(); ?>

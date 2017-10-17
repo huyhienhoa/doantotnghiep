@@ -2,7 +2,12 @@
 namespace backend\controllers;
 
 use common\models\Loaitailieu;
+use frontend\models\PasswordResetRequestForm;
+use frontend\models\ResetPasswordForm;
 use Yii;
+use yii\base\InvalidParamException;
+use yii\swiftmailer\Mailer;
+use yii\web\BadRequestHttpException;
 use yii\web\Controller;
 use yii\filters\VerbFilter;
 use yii\filters\AccessControl;
@@ -23,7 +28,7 @@ class SiteController extends Controller
                 'class' => AccessControl::className(),
                 'rules' => [
                     [
-                        'actions' => ['login', 'error'],
+                        'actions' => ['login', 'error', 'request-password-reset', 'reset-password'],
                         'allow' => true,
                     ],
                     [
@@ -100,4 +105,53 @@ class SiteController extends Controller
 
         return $this->goHome();
     }
+
+    public function actionRequestPasswordReset()
+    {
+        $model = new PasswordResetRequestForm();
+        if ($model->load(Yii::$app->request->post()) && $model->validate()) {
+            if ($model->sendEmail()) {
+                Yii::$app->session->setFlash('success', 'Link đổi mật khẩu đã được gửi, vui lòng kiểm tra email của bạn!');
+
+                return $this->goHome();
+            } else {
+                Yii::$app->session->setFlash('error', 'Xin lỗi, chúng tôi không thể reset mật khẩu từ email bạn cung cấp!');
+            }
+        }
+
+        return $this->render('requestPasswordResetToken', [
+            'model' => $model,
+        ]);
+    }
+
+    /**
+     * Resets password.
+     *
+     * @param string $token
+     * @return mixed
+     * @throws BadRequestHttpException
+     */
+    public function actionResetPassword($token)
+    {
+//        if($_POST['password_check']);
+//        var_dump($_POST['password']);exit;
+
+        try {
+            $model = new ResetPasswordForm($token);
+        } catch (InvalidParamException $e) {
+            throw new BadRequestHttpException($e->getMessage());
+        }
+
+        if ($model->load(Yii::$app->request->post()) && $model->validate() && $model->resetPassword()) {
+            Yii::$app->session->setFlash('success', 'Mật khẩu mới đã được lưu!');
+
+            return $this->goHome();
+        }
+
+        return $this->render('resetPassword', [
+            'model' => $model,
+        ]);
+    }
+
+    
 }
