@@ -6,8 +6,8 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model common\models\Bomon */
 
-$this->title = 'Create Bomon';
-$this->params['breadcrumbs'][] = ['label' => 'Bomons', 'url' => ['index']];
+$this->title = 'Thêm mới';
+$this->params['breadcrumbs'][] = ['label' => 'Bộ môn', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="bomon-create">

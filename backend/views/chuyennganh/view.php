@@ -7,7 +7,7 @@ use yii\widgets\DetailView;
 /* @var $model common\models\Chuyennganh */
 
 $this->title = $model->name;
-$this->params['breadcrumbs'][] = ['label' => 'Chuyennganhs', 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => 'Chuyên ngành', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="chuyennganh-view">
@@ -15,11 +15,11 @@ $this->params['breadcrumbs'][] = $this->title;
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
-        <?= Html::a('Update', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
-        <?= Html::a('Delete', ['delete', 'id' => $model->id], [
+        <?= Html::a('<span class="glyphicon glyphicon-edit"></span> Cập nhật', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
+        <?= Html::a('<span class="glyphicon glyphicon-trash"></span> Xóa', ['delete', 'id' => $model->id], [
             'class' => 'btn btn-danger',
             'data' => [
-                'confirm' => 'Are you sure you want to delete this item?',
+                'confirm' => 'Bạn có thực sự muốn xóa bản ghi này?',
                 'method' => 'post',
             ],
         ]) ?>
@@ -31,7 +31,11 @@ $this->params['breadcrumbs'][] = $this->title;
             'id',
             'ma',
             'name',
-            'khoa_id',
+            [
+                'attribute'=>'khoa_id',
+                'label'=>'Khoa',
+                'value'=>$model->khoa->tenkhoa
+            ],
         ],
     ]) ?>
 

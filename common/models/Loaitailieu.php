@@ -40,6 +40,7 @@ class Loaitailieu extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
+            [['ma', 'name'], 'required', 'message' => 'Chưa điền {attribute}'],
             [['ma'], 'string', 'max' => 20],
             [['name'], 'string', 'max' => 100],
         ];
@@ -52,8 +53,8 @@ class Loaitailieu extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'ma' => 'Ma',
-            'name' => 'Name',
+            'ma' => 'Mã loại tài liệu',
+            'name' => 'Tên loại tài liệu',
         ];
     }
 

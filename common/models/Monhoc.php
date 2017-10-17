@@ -40,7 +40,7 @@ class Monhoc extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['tenmonhoc', 'mamonhoc', 'sotinchi', 'bomon_id'], 'required'],
+            [['tenmonhoc', 'mamonhoc', 'sotinchi', 'bomon_id'], 'required', 'message' => 'Chưa điền {attribute}'],
             [['sotinchi', 'bomon_id'], 'integer'],
             [['thuchanh', 'baitaplon'], 'string'],
             [['tenmonhoc'], 'string', 'max' => 200],
@@ -56,12 +56,12 @@ class Monhoc extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'tenmonhoc' => 'Tenmonhoc',
-            'mamonhoc' => 'Mamonhoc',
-            'sotinchi' => 'Sotinchi',
-            'bomon_id' => 'Bomon ID',
-            'thuchanh' => 'Thuchanh',
-            'baitaplon' => 'Baitaplon',
+            'tenmonhoc' => 'Tên môn học',
+            'mamonhoc' => 'Mã môn học',
+            'sotinchi' => 'Số tín chỉ',
+            'bomon_id' => 'Bộ môn',
+            'thuchanh' => 'Thực hành',
+            'baitaplon' => 'Bài tập lớn',
         ];
     }
 

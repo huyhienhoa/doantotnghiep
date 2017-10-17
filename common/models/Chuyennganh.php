@@ -31,7 +31,7 @@ class Chuyennganh extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['ma', 'name', 'khoa_id'], 'required'],
+            [['ma', 'name', 'khoa_id'], 'required', 'message' => 'Chưa điền {attribute}'],
             [['khoa_id'], 'integer'],
             [['ma'], 'string', 'max' => 20],
             [['name'], 'string', 'max' => 100],
@@ -46,9 +46,9 @@ class Chuyennganh extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'ma' => 'Ma',
-            'name' => 'Name',
-            'khoa_id' => 'Khoa ID',
+            'ma' => 'Mã chuyên ngành',
+            'name' => 'Tên chuyên ngành',
+            'khoa_id' => 'Khoa',
         ];
     }
 

@@ -2,7 +2,8 @@
 
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
-
+use yii\helpers\ArrayHelper;
+use common\models\Bomon;
 /* @var $this yii\web\View */
 /* @var $model common\models\Monhoc */
 /* @var $form yii\widgets\ActiveForm */
@@ -12,20 +13,49 @@ use yii\widgets\ActiveForm;
 
     <?php $form = ActiveForm::begin(); ?>
 
-    <?= $form->field($model, 'tenmonhoc')->textInput(['maxlength' => true]) ?>
+    <div class="row">
+        <div class="col-md-4">
+            <?= $form->field($model, 'mamonhoc')->textInput(['maxlength' => true]) ?>
+        </div>
+        <div class="col-md-4">
+            <?= $form->field($model, 'tenmonhoc')->textInput(['maxlength' => true]) ?>
+        </div>
+        <div class="col-md-4">
+            <?= $form->field($model, 'sotinchi')->textInput() ?>
+        </div>
+    </div>
 
-    <?= $form->field($model, 'mamonhoc')->textInput(['maxlength' => true]) ?>
+    <div class="row">
+        <div class="col-md-4">
+            <?= $form->field($model, 'bomon_id')->dropDownList(
+                ArrayHelper::map(Bomon::find()->all(),'id','tenbomon' ),
+                [
+                    'prompt'=>'Chọn...'
+                ]
+            ) ?>
+        </div>
+        <div class="col-md-4">
+            <?= $form->field($model, 'thuchanh')->dropDownList([ 'co' => 'Có', 'khong' => 'Không', ], ['prompt' => 'Chọn...']) ?>
+        </div>
+        <div class="col-md-4">
+            <?= $form->field($model, 'baitaplon')->dropDownList([ 'co' => 'Có', 'khong' => 'Không', ], ['prompt' => 'Chọn...']) ?>
+        </div>
+    </div>
 
-    <?= $form->field($model, 'sotinchi')->textInput() ?>
 
-    <?= $form->field($model, 'bomon_id')->textInput() ?>
 
-    <?= $form->field($model, 'thuchanh')->dropDownList([ 'co' => 'Co', 'khong' => 'Khong', ], ['prompt' => '']) ?>
 
-    <?= $form->field($model, 'baitaplon')->dropDownList([ 'co' => 'Co', 'khong' => 'Khong', ], ['prompt' => '']) ?>
+
+
+
+
+
+
+
+
 
     <div class="form-group">
-        <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>
+        <?= Html::submitButton('<span class="glyphicon glyphicon-floppy-save"></span> Lưu lại', ['class' => 'btn btn-success']) ?>
     </div>
 
     <?php ActiveForm::end(); ?>

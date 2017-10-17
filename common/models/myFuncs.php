@@ -26,6 +26,18 @@ class myFuncs
         return "{$arr[2]}/{$arr[1]}/{$arr[0]}";
     }
 
+    public static function getThuchanh($str){
+        if($str=='co')
+            return 'Có';
+        return 'Không';
+    }
+
+    public static function getBTL($str){
+        if($str=='co')
+            return 'Có';
+        return 'Không';
+    }
+
     public static function sinhDuongDan($str){
         $coDau=array("à","á","ạ","ả","ã","â","ầ","ấ","ậ","ẩ","ẫ","ă","ằ","ắ"
         ,"ặ","ẳ","ẵ","è","é","ẹ","ẻ","ẽ","ê","ề","ế","ệ","ể","ễ","ì","í","ị","ỉ","ĩ",

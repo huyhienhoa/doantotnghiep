@@ -32,7 +32,7 @@ class Khoa extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['makhoa', 'tenkhoa'], 'required'],
+            [['makhoa', 'tenkhoa'], 'required', 'message' => 'Chưa điền {attribute}'],
             [['makhoa'], 'string', 'max' => 10],
             [['tenkhoa'], 'string', 'max' => 200],
             [['makhoa'], 'unique'],
@@ -47,8 +47,8 @@ class Khoa extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'makhoa' => 'Makhoa',
-            'tenkhoa' => 'Tenkhoa',
+            'makhoa' => 'Mã khoa',
+            'tenkhoa' => 'Tên khoa',
         ];
     }
 

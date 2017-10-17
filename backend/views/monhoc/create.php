@@ -6,8 +6,8 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model common\models\Monhoc */
 
-$this->title = 'Create Monhoc';
-$this->params['breadcrumbs'][] = ['label' => 'Monhocs', 'url' => ['index']];
+$this->title = 'Thêm mới';
+$this->params['breadcrumbs'][] = ['label' => 'Môn học', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="monhoc-create">

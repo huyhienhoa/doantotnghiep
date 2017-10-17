@@ -6,8 +6,8 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model common\models\Hinhthucdaotao */
 
-$this->title = 'Create Hinhthucdaotao';
-$this->params['breadcrumbs'][] = ['label' => 'Hinhthucdaotaos', 'url' => ['index']];
+$this->title = 'Thêm mới';
+$this->params['breadcrumbs'][] = ['label' => 'Hình thức đào tạo', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="hinhthucdaotao-create">

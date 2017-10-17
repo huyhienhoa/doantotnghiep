@@ -6,8 +6,8 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model common\models\Khoa */
 
-$this->title = 'Create Khoa';
-$this->params['breadcrumbs'][] = ['label' => 'Khoas', 'url' => ['index']];
+$this->title = 'Thêm mới';
+$this->params['breadcrumbs'][] = ['label' => 'Khoa', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="khoa-create">

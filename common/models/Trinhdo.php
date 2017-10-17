@@ -13,7 +13,6 @@ use Yii;
  * @property Bangtheodoiketquahoctap[] $bangtheodoiketquahoctaps
  * @property Chuongtrinhdaotao[] $chuongtrinhdaotaos
  * @property Nganhangdethi[] $nganhangdethis
- * @property ThongbaoQuyetdinh[] $thongbaoQuyetdinhs
  */
 class Trinhdo extends \yii\db\ActiveRecord
 {
@@ -31,6 +30,7 @@ class Trinhdo extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
+            [['name'], 'required', 'message' => 'Chưa điền {attribute}'],
             [['name'], 'string', 'max' => 100],
         ];
     }
@@ -42,7 +42,7 @@ class Trinhdo extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'name' => 'Name',
+            'name' => 'Tên trình độ',
         ];
     }
 
@@ -68,13 +68,5 @@ class Trinhdo extends \yii\db\ActiveRecord
     public function getNganhangdethis()
     {
         return $this->hasMany(Nganhangdethi::className(), ['trinhdo_id' => 'id']);
-    }
-
-    /**
-     * @return \yii\db\ActiveQuery
-     */
-    public function getThongbaoQuyetdinhs()
-    {
-        return $this->hasMany(ThongbaoQuyetdinh::className(), ['trinhdo_id' => 'id']);
     }
 }

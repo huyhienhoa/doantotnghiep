@@ -7,7 +7,7 @@ use yii\widgets\Pjax;
 /* @var $searchModel common\models\searchs\NamhocSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Namhocs';
+$this->title = 'Năm học';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="namhoc-index">
@@ -17,7 +17,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <p>
-        <?= Html::a('Create Namhoc', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= $btn_them; ?>
     </p>
 
     <?= GridView::widget([
@@ -26,10 +26,34 @@ $this->params['breadcrumbs'][] = $this->title;
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
-            'id',
-            'namhoc',
+//            'id',
+            'name',
 
-            ['class' => 'yii\grid\ActionColumn'],
+//            ['class' => 'yii\grid\ActionColumn'],
+            [
+                'class' => 'yii\grid\ActionColumn',
+                'template' => '<p class="text-center">{download}</p>',
+                'header' => 'Download',
+                'visible' => false
+            ],
+            [
+                'class' => 'yii\grid\ActionColumn',
+                'template' => '<p class="text-center">{view}</p>',
+                'header' => '<p class="text-center">Xem</p>',
+//                'visible' => false
+            ],
+            [
+                'class' => 'yii\grid\ActionColumn',
+                'template' => '<p class="text-center">{update}</p>',
+                'header' => '<p class="text-center">Sửa</p>',
+                'visible' => in_array(Yii::$app->user->identity->role, ['admin'])
+            ],
+            [
+                'class' => 'yii\grid\ActionColumn',
+                'template' => '<p class="text-center">{delete}</p>',
+                'header' => '<p class="text-center">Xóa</p>',
+                'visible' => in_array(Yii::$app->user->identity->role, ['admin'])
+            ],
         ],
     ]); ?>
     <?php Pjax::end(); ?>

@@ -7,7 +7,7 @@ use yii\grid\GridView;
 /* @var $searchModel common\models\searchs\GiangvienSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Giangviens';
+$this->title = 'Giảng viên';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="giangvien-index">
@@ -16,7 +16,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <p>
-        <?= Html::a('Create Giangvien', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= $btn_them; ?>
     </p>
 
     <?= GridView::widget([
@@ -28,9 +28,40 @@ $this->params['breadcrumbs'][] = $this->title;
             'id',
             'magiangvien',
             'tengiangvien',
-            'bomon_id',
+            [
+                'attribute'=>'bomon_id',
+                'label'=>'Bộ môn',
+                'value'=>function($data){
+                    return $data->bomon->tenbomon;
+                },
+            ],
 
-            ['class' => 'yii\grid\ActionColumn'],
+//            ['class' => 'yii\grid\ActionColumn'],
+
+            [
+                'class' => 'yii\grid\ActionColumn',
+                'template' => '<p class="text-center">{download}</p>',
+                'header' => '<p class="text-center">Download</p>',
+                'visible' => false
+            ],
+            [
+                'class' => 'yii\grid\ActionColumn',
+                'template' => '<p class="text-center">{view}</p>',
+                'header' => '<p class="text-center">Xem</p>',
+//                'visible' => false
+            ],
+            [
+                'class' => 'yii\grid\ActionColumn',
+                'template' => '<p class="text-center">{update}</p>',
+                'header' => '<p class="text-center">Sửa</p>',
+                'visible' => in_array(Yii::$app->user->identity->role, ['trưởng khoa'])
+            ],
+            [
+                'class' => 'yii\grid\ActionColumn',
+                'template' => '<p class="text-center">{delete}</p>',
+                'header' => '<p class="text-center">Xóa</p>',
+                'visible' => in_array(Yii::$app->user->identity->role, ['trưởng khoa'])
+            ],
         ],
     ]); ?>
 </div>

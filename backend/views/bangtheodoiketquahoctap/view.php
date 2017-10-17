@@ -7,7 +7,7 @@ use yii\widgets\DetailView;
 /* @var $model common\models\Bangtheodoiketquahoctap */
 
 $this->title = $model->name;
-$this->params['breadcrumbs'][] = ['label' => 'Bangtheodoiketquahoctaps', 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => 'BẢNG THEO DÕI KẾT QUẢ HỌC TẬP', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="bangtheodoiketquahoctap-view">
@@ -15,11 +15,11 @@ $this->params['breadcrumbs'][] = $this->title;
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
-        <?= Html::a('Update', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
-        <?= Html::a('Delete', ['delete', 'id' => $model->id], [
+        <?= Html::a('<span class="glyphicon glyphicon-edit"></span> Cập nhật', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
+        <?= Html::a('<span class="glyphicon glyphicon-trash"></span> Xóa', ['delete', 'id' => $model->id], [
             'class' => 'btn btn-danger',
             'data' => [
-                'confirm' => 'Are you sure you want to delete this item?',
+                'confirm' => 'Bạn có thực sự muốn xóa bản ghi này không?',
                 'method' => 'post',
             ],
         ]) ?>
@@ -34,13 +34,41 @@ $this->params['breadcrumbs'][] = $this->title;
             'updated_at',
             'nhomhocphan',
             'filedinhkem',
-            'giangvien_id',
-            'hinhthucdaotao_id',
-            'trinhdo_id',
-            'monhoc_id',
-            'hocky_id',
-            'namhoc_id',
-            'loaitailieu_id',
+            [
+                'attribute'=>'giangvien_id',
+                'label'=>'Giảng viên',
+                'value'=>$model->giangvien->tengiangvien
+            ],
+            [
+                'attribute'=>'hinhthucdaotao_id',
+                'label'=>'Hình thức đào tạo',
+                'value'=>$model->hinhthucdaotao->name
+            ],
+            [
+                'attribute'=>'trinhdo_id',
+                'label'=>'Trình độ',
+                'value'=>$model->trinhdo->name
+            ],
+            [
+                'attribute'=>'monhoc_id',
+                'label'=>'Môn học',
+                'value'=>$model->monhoc->tenmonhoc
+            ],
+            [
+                'attribute'=>'hocky_id',
+                'label'=>'Học kỳ',
+                'value'=>$model->hocky->name
+            ],
+            [
+                'attribute'=>'namhoc_id',
+                'label'=>'Năm học',
+                'value'=>$model->namhoc->name
+            ],
+            [
+                'attribute'=>'loaitailieu_id',
+                'label'=>'Loại tài liệu',
+                'value'=>$model->loaitailieu->name
+            ],
         ],
     ]) ?>
 

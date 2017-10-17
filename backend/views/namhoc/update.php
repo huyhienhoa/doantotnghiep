@@ -5,10 +5,10 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model common\models\Namhoc */
 
-$this->title = 'Update Namhoc: {nameAttribute}';
-$this->params['breadcrumbs'][] = ['label' => 'Namhocs', 'url' => ['index']];
-$this->params['breadcrumbs'][] = ['label' => $model->id, 'url' => ['view', 'id' => $model->id]];
-$this->params['breadcrumbs'][] = 'Update';
+$this->title = 'Cập nhật bản ghi: '.$model->name;
+$this->params['breadcrumbs'][] = ['label' => 'Năm học', 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => $model->name, 'url' => ['view', 'id' => $model->id]];
+$this->params['breadcrumbs'][] = 'Cập nhật';
 ?>
 <div class="namhoc-update">
 

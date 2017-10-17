@@ -6,8 +6,8 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model common\models\Trinhdo */
 
-$this->title = 'Create Trinhdo';
-$this->params['breadcrumbs'][] = ['label' => 'Trinhdos', 'url' => ['index']];
+$this->title = 'Thêm mới';
+$this->params['breadcrumbs'][] = ['label' => 'Trình độ', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="trinhdo-create">

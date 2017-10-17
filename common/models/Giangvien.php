@@ -35,7 +35,7 @@ class Giangvien extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['bomon_id'], 'required'],
+            [['magiangvien', 'tengiangvien', 'bomon_id'], 'required', 'message' => 'Chưa điền {attribute}'],
             [['bomon_id'], 'integer'],
             [['magiangvien'], 'string', 'max' => 10],
             [['tengiangvien'], 'string', 'max' => 45],
@@ -51,9 +51,9 @@ class Giangvien extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'magiangvien' => 'Magiangvien',
-            'tengiangvien' => 'Tengiangvien',
-            'bomon_id' => 'Bomon ID',
+            'magiangvien' => 'Mã giảng viên',
+            'tengiangvien' => 'Tên giảng viên',
+            'bomon_id' => 'Bộ môn',
         ];
     }
 

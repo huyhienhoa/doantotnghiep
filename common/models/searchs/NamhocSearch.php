@@ -18,7 +18,8 @@ class NamhocSearch extends Namhoc
     public function rules()
     {
         return [
-            [['id', 'namhoc'], 'integer'],
+            [['id'], 'integer'],
+            [['name'], 'safe'],
         ];
     }
 
@@ -59,8 +60,9 @@ class NamhocSearch extends Namhoc
         // grid filtering conditions
         $query->andFilterWhere([
             'id' => $this->id,
-            'namhoc' => $this->namhoc,
         ]);
+
+        $query->andFilterWhere(['like', 'name', $this->name]);
 
         return $dataProvider;
     }

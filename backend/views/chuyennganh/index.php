@@ -7,7 +7,7 @@ use yii\widgets\Pjax;
 /* @var $searchModel common\models\searchs\ChuyennganhSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Chuyennganhs';
+$this->title = 'Chuyên ngành';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="chuyennganh-index">
@@ -17,7 +17,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <p>
-        <?= Html::a('Create Chuyennganh', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= $btn_them; ?>
     </p>
 
     <?= GridView::widget([
@@ -26,12 +26,43 @@ $this->params['breadcrumbs'][] = $this->title;
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
-            'id',
+//            'id',
             'ma',
             'name',
-            'khoa_id',
+            [
+                'attribute'=>'khoa_id',
+                'label'=>'Khoa',
+                'value'=>function($data){
+                    return $data->khoa->tenkhoa;
+                },
+            ],
 
-            ['class' => 'yii\grid\ActionColumn'],
+//            ['class' => 'yii\grid\ActionColumn'],
+
+            [
+                'class' => 'yii\grid\ActionColumn',
+                'template' => '<p class="text-center">{download}</p>',
+                'header' => '<p class="text-center">Download</p>',
+                'visible' => false
+            ],
+            [
+                'class' => 'yii\grid\ActionColumn',
+                'template' => '<p class="text-center">{view}</p>',
+                'header' => '<p class="text-center">Xem</p>',
+//                'visible' => false
+            ],
+            [
+                'class' => 'yii\grid\ActionColumn',
+                'template' => '<p class="text-center">{update}</p>',
+                'header' => '<p class="text-center">Sửa</p>',
+                'visible' => in_array(Yii::$app->user->identity->role, ['trưởng khoa'])
+            ],
+            [
+                'class' => 'yii\grid\ActionColumn',
+                'template' => '<p class="text-center">{delete}</p>',
+                'header' => '<p class="text-center">Xóa</p>',
+                'visible' => in_array(Yii::$app->user->identity->role, ['trưởng khoa'])
+            ],
         ],
     ]); ?>
     <?php Pjax::end(); ?>

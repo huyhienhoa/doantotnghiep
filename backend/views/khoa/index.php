@@ -7,7 +7,7 @@ use yii\widgets\Pjax;
 /* @var $searchModel common\models\searchs\KhoaSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Khoas';
+$this->title = 'Khoa';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="khoa-index">
@@ -17,7 +17,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <p>
-        <?= Html::a('Create Khoa', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= $btn_them; ?>
     </p>
 
     <?= GridView::widget([
@@ -26,11 +26,43 @@ $this->params['breadcrumbs'][] = $this->title;
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
-            'id',
+//            'id',
             'makhoa',
             'tenkhoa',
 
-            ['class' => 'yii\grid\ActionColumn'],
+
+
+            [
+                'class' => 'yii\grid\ActionColumn',
+                'template' => '{download}',
+//                'header' => 'Download',
+                'visible' => false
+            ],
+//            ['class' => 'yii\grid\ActionColumn'],
+        [
+            'class' => 'yii\grid\ActionColumn',
+            'template' => '<p class="text-center">{download}</p>',
+            'header' => 'Download',
+                'visible' => false
+        ],
+        [
+            'class' => 'yii\grid\ActionColumn',
+            'template' => '<p class="text-center">{view}</p>',
+            'header' => '<p class="text-center">Xem</p>',
+//                'visible' => false
+        ],
+        [
+            'class' => 'yii\grid\ActionColumn',
+            'template' => '<p class="text-center">{update}</p>',
+            'header' => '<p class="text-center">Sửa</p>',
+            'visible' => in_array(Yii::$app->user->identity->role, ['admin'])
+        ],
+        [
+            'class' => 'yii\grid\ActionColumn',
+            'template' => '<p class="text-center">{delete}</p>',
+            'header' => '<p class="text-center">Xóa</p>',
+            'visible' => in_array(Yii::$app->user->identity->role, ['admin'])
+        ],
         ],
     ]); ?>
     <?php Pjax::end(); ?>
