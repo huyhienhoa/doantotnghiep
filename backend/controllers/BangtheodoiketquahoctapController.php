@@ -5,6 +5,8 @@ namespace backend\controllers;
 use Yii;
 use common\models\Bangtheodoiketquahoctap;
 use common\models\searchs\BangtheodoiketquahoctapSearch;
+use yii\bootstrap\Html;
+use yii\filters\AccessControl;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -20,6 +22,30 @@ class BangtheodoiketquahoctapController extends Controller
     public function behaviors()
     {
         return [
+            'access' => [
+                'class' => AccessControl::className(),
+                'rules' => [
+                    [
+                        'actions' => ['login', 'error'],
+                        'allow' => true,
+                    ],
+                    [
+                        'actions' => ['logout', 'index', 'download', 'view'],
+                        'allow' => true,
+                        'roles' => ['@'],
+                    ],
+
+                    [
+                        'actions' => ['create', 'update', 'delete'],
+                        'allow' => true,
+                        'matchCallback' => function($rule, $action){
+                            if (in_array(Yii::$app->user->identity->role, ['admin', 'trưởng bộ môn']))
+                                return true;
+                            return false;
+                        }
+                    ],
+                ],
+            ],
             'verbs' => [
                 'class' => VerbFilter::className(),
                 'actions' => [
@@ -37,10 +63,14 @@ class BangtheodoiketquahoctapController extends Controller
     {
         $searchModel = new BangtheodoiketquahoctapSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
-
+        if (in_array(Yii::$app->user->identity->role, ['admin', 'trưởng bộ môn']))
+            $btn_them =  Html::a('<span class="glyphicon glyphicon-plus"></span> Thêm mới', ['create'], ['class' => 'btn btn-success']);
+        else
+            $btn_them = '';
         return $this->render('index', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
+            'btn_them' => $btn_them
         ]);
     }
 

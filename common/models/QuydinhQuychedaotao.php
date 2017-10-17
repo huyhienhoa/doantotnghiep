@@ -38,7 +38,6 @@ class QuydinhQuychedaotao extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-
             [['name', 'namhoc_id'], 'required','message' => 'Chưa điền {attribute}'],
             [['ngaybanhanh', 'created_at', 'updated_at'], 'safe'],
             [['namhoc_id', 'loaitailieu_id'], 'integer'],

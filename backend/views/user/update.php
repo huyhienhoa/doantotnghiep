@@ -5,10 +5,11 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model common\models\User */
 
-$this->title = 'Update User: {nameAttribute}';
-$this->params['breadcrumbs'][] = ['label' => 'Users', 'url' => ['index']];
-$this->params['breadcrumbs'][] = ['label' => $model->id, 'url' => ['view', 'id' => $model->id]];
-$this->params['breadcrumbs'][] = 'Update';
+$this->title = 'Cập nhật bản ghi: '.$model->username;
+$this->params['breadcrumbs'][] = ['label' => 'Người dùng', 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => $model->username, 'url' => ['view', 'id' => $model->id]];
+$this->params['breadcrumbs'][] = 'Cập nhật';
+
 ?>
 <div class="user-update">
 

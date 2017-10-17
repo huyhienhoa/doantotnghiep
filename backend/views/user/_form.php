@@ -8,22 +8,37 @@ use yii\widgets\ActiveForm;
 /* @var $form yii\widgets\ActiveForm */
 ?>
 
-<div class="user-form">
+<!--<div class="container">-->
+    <div class="user-form">
 
-    <?php $form = ActiveForm::begin(); ?>
+        <?php $form = ActiveForm::begin(); ?>
 
-    <?= $form->field($model, 'username')->textInput(['maxlength' => true]) ?>
+        <div class="row">
+            <div class="col-md-3">
+                <?= $form->field($model, 'username') ?>
+            </div>
 
-    <?= $form->field($model, 'password_hash')->textInput(['maxlength' => true, 'type'=>'password']) ?>
+            <div class="col-md-3">
+                <?= $form->field($model, 'email') ?>
+            </div>
 
-    <?= $form->field($model, 'email')->textInput(['maxlength' => true]) ?>
-    
-    <?= $form->field($model, 'role')->dropDownList([ 'admin' => 'Admin', 'trưởng bộ môn' => 'Trưởng bộ môn', 'trưởng khoa' => 'Trưởng khoa', 'giảng viên' => 'Giảng viên', ], ['prompt' => '']) ?>
+            <div class="col-md-3">
+                <?= $form->field($model, 'password_hash')->textInput(['type' => 'password']) ?>
+            </div>
 
-    <div class="form-group">
-        <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>
+            <div class="col-md-3">
+                <?= $form->field($model, 'role')->dropDownList([
+                    'admin' => 'admin',
+                    'trưởng khoa' => 'Trưởng khoa',
+                    'trưởng bộ môn' => 'Trưởng bộ môn',
+                    'giảng viên' => 'Giảng viên'
+                ]) ?>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <?= Html::submitButton('<span class="glyphicon glyphicon-floppy-save"></span> Lưu lại', ['class' => 'btn btn-success']) ?>
+        </div>
+
+        <?php ActiveForm::end(); ?>
     </div>
-
-    <?php ActiveForm::end(); ?>
-
-</div>

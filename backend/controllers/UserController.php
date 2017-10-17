@@ -5,6 +5,7 @@ namespace backend\controllers;
 use Yii;
 use common\models\User;
 use common\models\searchs\UserSearch;
+
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -20,6 +21,28 @@ class UserController extends Controller
     public function behaviors()
     {
         return [
+                    'access' => [
+                'class' => AccessControl::className(),
+                'rules' => [
+                    [
+                        'actions' => ['login', 'error'],
+                        'allow' => true,
+                    ],
+                    [
+                        'actions' => ['logout', 'index', 'view', 'update', 'delete', 'create'],
+                        'allow' => true,
+//                        'roles' => ['@'],
+                        'matchCallback' => function($rule, $action){
+//                            Yii::$app->user->identity;
+                            $userLogged = Yii::$app->user->identity;
+                            if (in_array($userLogged->role, ['admin', 'trưởng khoa']))
+                                return true;
+                            return false;
+                        }
+                    ],
+                ],
+            ],
+
             'verbs' => [
                 'class' => VerbFilter::className(),
                 'actions' => [

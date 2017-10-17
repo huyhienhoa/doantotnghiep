@@ -17,6 +17,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <p>
+        <?= $btn_them; ?>
         <?= Html::a('<span class="glyphicon glyphicon-plus"></span> Thêm mới', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
@@ -29,7 +30,31 @@ $this->params['breadcrumbs'][] = $this->title;
 //            'id',
             'name',
 
-            ['class' => 'yii\grid\ActionColumn'],
+//            ['class' => 'yii\grid\ActionColumn'],
+            [
+                'class' => 'yii\grid\ActionColumn',
+                'template' => '<p class="text-center">{download}</p>',
+                'header' => 'Download',
+                'visible' => false
+            ],
+            [
+                'class' => 'yii\grid\ActionColumn',
+                'template' => '<p class="text-center">{view}</p>',
+                'header' => '<p class="text-center">Xem</p>',
+//                'visible' => false
+            ],
+            [
+                'class' => 'yii\grid\ActionColumn',
+                'template' => '<p class="text-center">{update}</p>',
+                'header' => '<p class="text-center">Sửa</p>',
+                'visible' => in_array(Yii::$app->user->identity->role, ['admin'])
+            ],
+            [
+                'class' => 'yii\grid\ActionColumn',
+                'template' => '<p class="text-center">{delete}</p>',
+                'header' => '<p class="text-center">Xóa</p>',
+                'visible' => in_array(Yii::$app->user->identity->role, ['admin'])
+            ],
         ],
     ]); ?>
     <?php Pjax::end(); ?>
