@@ -1,6 +1,7 @@
 <?php
 namespace backend\controllers;
 
+use common\models\Loaitailieu;
 use Yii;
 use yii\web\Controller;
 use yii\filters\VerbFilter;
@@ -60,7 +61,11 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
-        return $this->render('index');
+        $loaitailieus = Loaitailieu::find()->all();
+        return $this->render('index',
+            [
+                'loaitailieus'=>$loaitailieus
+            ]);
     }
 
     /**

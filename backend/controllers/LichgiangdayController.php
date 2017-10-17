@@ -48,6 +48,7 @@ class LichgiangdayController extends Controller
                 ],
             ],
 
+
             'verbs' => [
                 'class' => VerbFilter::className(),
                 'actions' => [
@@ -73,6 +74,7 @@ class LichgiangdayController extends Controller
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
             'btn_them' => $btn_them
+
         ]);
     }
 

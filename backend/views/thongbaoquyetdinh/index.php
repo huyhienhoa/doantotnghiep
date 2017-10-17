@@ -17,7 +17,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <p>
-        <?= $btn_them ?>
+        <?= $btn_them; ?>
     </p>
 
     <?= GridView::widget([
@@ -38,13 +38,14 @@ $this->params['breadcrumbs'][] = $this->title;
 //            'created_at',
 //            'updated_at',
 
-//            [
-//                'attribute'=>'hinhthucdaotao_id',
-//                'label'=>'Hình thức đào tạo',
-//                'value'=>function($data){
-//                    return $data->hinhthucdaotao->name;
-//                },
-//            ],
+
+            [
+                'attribute'=>'hinhthucdaotao_id',
+                'label'=>'Hình thức đào tạo',
+                'value'=>function($data){
+                    return $data->hinhthucdaotao->name;
+                },
+            ],
             [
                 'attribute'=>'trinhdo_id',
                 'label'=>'Trình độ',
@@ -54,6 +55,7 @@ $this->params['breadcrumbs'][] = $this->title;
             ],
             'filedinhkem',
 //            'loaitailieu_id',
+
 
 //            ['class' => 'yii\grid\ActionColumn'],
             [

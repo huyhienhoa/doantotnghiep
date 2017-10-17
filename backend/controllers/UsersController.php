@@ -3,18 +3,16 @@
 namespace backend\controllers;
 
 use Yii;
-use common\models\Hocky;
-use common\models\searchs\HockySearch;
-use yii\bootstrap\Html;
-use yii\filters\AccessControl;
+use common\models\Users;
+use common\models\searchs\UsersSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
 /**
- * HockyController implements the CRUD actions for Hocky model.
+ * UsersController implements the CRUD actions for Users model.
  */
-class HockyController extends Controller
+class UsersController extends Controller
 {
     /**
      * @inheritdoc
@@ -22,31 +20,6 @@ class HockyController extends Controller
     public function behaviors()
     {
         return [
-            'access' => [
-                'class' => AccessControl::className(),
-                'rules' => [
-                    [
-                        'actions' => ['login', 'error'],
-                        'allow' => true,
-                    ],
-                    [
-                        'actions' => ['logout', 'download', 'view'],
-                        'allow' => true,
-                        'roles' => ['@'],
-                    ],
-
-                    [
-                        'actions' => ['create', 'update', 'delete', 'index'],
-                        'allow' => true,
-                        'matchCallback' => function($rule, $action){
-                            if (in_array(Yii::$app->user->identity->role, ['admin']))
-                                return true;
-                            return false;
-                        }
-                    ],
-                ],
-            ],
-
             'verbs' => [
                 'class' => VerbFilter::className(),
                 'actions' => [
@@ -57,26 +30,22 @@ class HockyController extends Controller
     }
 
     /**
-     * Lists all Hocky models.
+     * Lists all Users models.
      * @return mixed
      */
     public function actionIndex()
     {
-        $searchModel = new HockySearch();
+        $searchModel = new UsersSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
-        if (in_array(Yii::$app->user->identity->role, ['admin']))
-            $btn_them =  Html::a('<span class="glyphicon glyphicon-plus"></span> Thêm mới', ['create'], ['class' => 'btn btn-success']);
-        else
-            $btn_them = '';
+
         return $this->render('index', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
-            'btn_them' => $btn_them
         ]);
     }
 
     /**
-     * Displays a single Hocky model.
+     * Displays a single Users model.
      * @param integer $id
      * @return mixed
      */
@@ -88,13 +57,13 @@ class HockyController extends Controller
     }
 
     /**
-     * Creates a new Hocky model.
+     * Creates a new Users model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
     public function actionCreate()
     {
-        $model = new Hocky();
+        $model = new Users();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
@@ -106,7 +75,7 @@ class HockyController extends Controller
     }
 
     /**
-     * Updates an existing Hocky model.
+     * Updates an existing Users model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param integer $id
      * @return mixed
@@ -125,7 +94,7 @@ class HockyController extends Controller
     }
 
     /**
-     * Deletes an existing Hocky model.
+     * Deletes an existing Users model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param integer $id
      * @return mixed
@@ -137,10 +106,16 @@ class HockyController extends Controller
         return $this->redirect(['index']);
     }
 
-    
+    /**
+     * Finds the Users model based on its primary key value.
+     * If the model is not found, a 404 HTTP exception will be thrown.
+     * @param integer $id
+     * @return Users the loaded model
+     * @throws NotFoundHttpException if the model cannot be found
+     */
     protected function findModel($id)
     {
-        if (($model = Hocky::findOne($id)) !== null) {
+        if (($model = Users::findOne($id)) !== null) {
             return $model;
         }
 

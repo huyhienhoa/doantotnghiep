@@ -24,6 +24,7 @@ AppAsset::register($this);
     <?php $this->head() ?>
 </head>
 <body>
+
 <?php $this->beginBody() ?>
 
 <div class="wrap">
@@ -35,9 +36,7 @@ AppAsset::register($this);
             'class' => 'navbar-inverse navbar-fixed-top',
         ],
     ]);
-    $menuItems = [
-        ['label' => 'Home', 'url' => ['/site/index']],
-    ];
+    
     if (Yii::$app->user->isGuest) {
         $menuItems[] = ['label' => 'Login', 'url' => ['/site/login']];
     } else{
@@ -108,18 +107,13 @@ AppAsset::register($this);
                 ['label' => 'Tài liệu bộ môn', 'url' => \yii\helpers\Url::toRoute(['tailieubomon/index'])],
             ]];
 
-        $menuItems[] = '<li>'
-            . Html::beginForm(['/site/logout'], 'post')
-            . Html::submitButton(
-                'Logout (' . Yii::$app->user->identity->username . ')',
-                ['class' => 'btn btn-link logout']
-            )
-            . Html::endForm()
-            . '</li>';
+        $menuItems = [
+            ['label' => 'Trang chủ', 'url' => ['/site/index']],
+        ];
+        $menuItems[] = ['label' => 'Đăng nhập', 'url' => ['/site/login']];
     }
-
     echo Nav::widget([
-        'options' => ['class' => 'navbar-nav navbar-right'],
+        'options' => ['class' => 'navbar-nav navbar-left'],
         'items' => $menuItems,
     ]);
     NavBar::end();
@@ -136,9 +130,9 @@ AppAsset::register($this);
 
 <footer class="footer">
     <div class="container">
-        <p class="pull-left">&copy; My Company <?= date('Y') ?></p>
+        <p class="pull-left">&copy; Quản lý tài liệu theo tiêu chuẩn ISO <?= date('Y') ?></p>
 
-        <p class="pull-right"><?= Yii::powered() ?></p>
+        <p class="pull-right">Đại học Hàng Hải Việt Nam</p>
     </div>
 </footer>
 

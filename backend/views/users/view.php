@@ -4,14 +4,13 @@ use yii\helpers\Html;
 use yii\widgets\DetailView;
 
 /* @var $this yii\web\View */
-/* @var $model common\models\User */
-
+/* @var $model common\models\Users */
 
 $this->title = $model->username;
-$this->params['breadcrumbs'][] = ['label' => 'Người dùng', 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => 'Tài khoản', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="user-view">
+<div class="users-view">
 
     <h1><?= Html::encode($this->title) ?></h1>
 
@@ -31,14 +30,15 @@ $this->params['breadcrumbs'][] = $this->title;
         'attributes' => [
             'id',
             'username',
-            'auth_key',
             'password_hash',
             'password_reset_token',
             'email:email',
+            'auth_key',
             'status',
             'created_at',
             'updated_at',
-            'role',
+            'password',
+            'quyenhan',
         ],
     ]) ?>
 

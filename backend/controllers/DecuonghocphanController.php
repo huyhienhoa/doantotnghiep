@@ -73,6 +73,7 @@ class DecuonghocphanController extends Controller
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
             'btn_them' => $btn_them
+
         ]);
     }
 
