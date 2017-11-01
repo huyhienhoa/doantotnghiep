@@ -18,12 +18,12 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <p>
         <?= $btn_them; ?>
-        <?= Html::a('<span class="glyphicon glyphicon-plus"></span> Thêm mới', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
+        'summary'=>'Trang {page}/{pageCount}. Số lượng bản ghi: {totalCount}',
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
@@ -38,6 +38,12 @@ $this->params['breadcrumbs'][] = $this->title;
                 'value'=>function($data){
                     return $data->monhoc->tenmonhoc;
                 },
+                'filter'=>Html::activeDropDownList($searchModel,
+                    'monhoc_id' ,
+                    \yii\helpers\ArrayHelper::map(\common\models\Monhoc::find()->all(),
+                        'id','tenmonhoc' ),
+                    ['prompt'=>'Tất cả','class'=>'form-control']
+                ),
             ],
             'filedinhkem',
             //'giangvien_id',
@@ -52,7 +58,7 @@ $this->params['breadcrumbs'][] = $this->title;
             [
                 'class' => 'yii\grid\ActionColumn',
                 'template' => '<p class="text-center">{download}</p>',
-                'header' => 'Download',
+                'header' => 'Tải về',
 //                'visible' => false
             ],
             [

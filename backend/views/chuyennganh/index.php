@@ -7,7 +7,7 @@ use yii\widgets\Pjax;
 /* @var $searchModel common\models\searchs\ChuyennganhSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Chuyên ngành';
+$this->title = 'CHUYÊN NGÀNH';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="chuyennganh-index">
@@ -23,6 +23,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
+        'summary'=>'Trang {page}/{pageCount}. Số lượng bản ghi: {totalCount}',
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
@@ -35,6 +36,12 @@ $this->params['breadcrumbs'][] = $this->title;
                 'value'=>function($data){
                     return $data->khoa->tenkhoa;
                 },
+                'filter'=>Html::activeDropDownList($searchModel,
+                    'khoa_id' ,
+                    \yii\helpers\ArrayHelper::map(\common\models\Khoa::find()->all(),
+                        'id','tenkhoa' ),
+                    ['prompt'=>'Tất cả','class'=>'form-control']
+                ),
             ],
 
 //            ['class' => 'yii\grid\ActionColumn'],

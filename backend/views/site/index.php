@@ -10,7 +10,8 @@ $this->title = 'Quản lý tài liệu';
         <div class="col-md-5">
             <h3>DANH SÁCH TÀI LIỆU</h3>
             <div class="vertical-menu">
-                <a href="<?=\yii\helpers\Url::toRoute(['ctdtdchp/index'])?>"><span class="glyphicon glyphicon-chevron-right"></span> chương trình đào tạo, đề cương học phần</a>
+                <a href="<?=\yii\helpers\Url::toRoute(['chuongtrinhdaotao/index'])?>"><span class="glyphicon glyphicon-chevron-right"></span> chương trình đào tạo</a>
+                <a href="<?=\yii\helpers\Url::toRoute(['decuonghocphan/index'])?>"><span class="glyphicon glyphicon-chevron-right"></span> đề cương học phần</a>
                 <a href="<?=\yii\helpers\Url::toRoute(['bangtheodoiketquahoctap/index'])?>"><span class="glyphicon glyphicon-chevron-right"></span> bảng theo dõi kết quả học tập</a>
                 <a href="<?=\yii\helpers\Url::toRoute(['congtacnghiencuukh/index'])?>"><span class="glyphicon glyphicon-chevron-right"></span> công tác nghiên cứu khoa học</a>
                 <a href="<?=\yii\helpers\Url::toRoute(['hopdonggiangday/index'])?>"><span class="glyphicon glyphicon-chevron-right"></span> Hợp đồng giảng dạy</a>

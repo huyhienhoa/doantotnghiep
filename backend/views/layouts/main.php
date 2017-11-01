@@ -10,6 +10,7 @@ use yii\bootstrap\NavBar;
 use yii\widgets\Breadcrumbs;
 use common\widgets\Alert;
 
+
 AppAsset::register($this);
 ?>
 <?php $this->beginPage() ?>
@@ -40,21 +41,34 @@ AppAsset::register($this);
     if (Yii::$app->user->isGuest) {
 
         $menuItems[] = ['label' => 'Đăng nhập', 'url' => ['/site/login']];
-    } else {
+
+    }
+    elseif (in_array(Yii::$app->user->identity->role, ['admin'])){
+        $menuItems[] = ['label' => 'Người dùng', 'url' => ['user/index']];
         $menuItems[] = ['label' => 'Quy định-Quy chế', 'url' => ['quydinhquychedaotao/index']];
         $menuItems[] = ['label' => 'Thông báo-Quyết định', 'url' => ['thongbaoquyetdinh/index']];
         $menuItems[] = '<li style="margin-top: 10px;">'
-        . Html::beginForm(['/site/search'],'get',['class'=>'input-group'])
-        . Html::textInput('search',NULL,['class'=>'form-control','style'=>'border-radius:5px'])
-        . Html::submitButton('<i class="glyphicon glyphicon-search"></i>',['class'=>'btn btn-default','style'=>'position: absolute;
-    right: 0px;
-    top:2px;
-    z-index: 9999;
-    background: transparent;
-    border: none;
-    '])
-        . Html::endForm()
-        . '</li>';
+//        . Html::beginForm(['/site/search'],'get',['class'=>'input-group'])
+//        . Html::textInput('search',NULL,['class'=>'form-control','style'=>'border-radius:5px'])
+//        . Html::submitButton('<i class="glyphicon glyphicon-search"></i>',['class'=>'btn btn-default','style'=>'position: absolute;
+//    right: 0px;
+//    top:2px;
+//    z-index: 9999;
+//    background: transparent;
+//    border: none;
+//    '])
+//        . Html::endForm()
+            . Html::beginForm(['/site/timkiem'],'',['id'=>'search_mini_form','class'=>'form-inline'])
+            . Html::textInput('timkiem',NULL,['type' => 'text', 'class'=>'form-control','style'=>'border-radius:5px'])
+            . Html::submitButton('<i class="glyphicon glyphicon-search"></i>',['class'=>'btn btn-default','style'=>'position: absolute;
+        right: 0px;
+        top:2px;
+        z-index: 9999;
+        background: transparent;
+        border: none;
+        '])
+            . Html::endForm()
+            . '</li>';
         $menuItems[] = '<li>'
             . Html::beginForm(['/site/logout'], 'post')
             . Html::submitButton(
@@ -63,6 +77,43 @@ AppAsset::register($this);
             )
             . Html::endForm()
             . '</li>';
+    }
+    else {
+        if (in_array(Yii::$app->user->identity->role, ['admin'])){
+            $menuItems[] = ['label' => 'Người dùng', 'url' => ['user/index']];
+        }
+            $menuItems[] = ['label' => 'Quy định-Quy chế', 'url' => ['quydinhquychedaotao/index']];
+            $menuItems[] = ['label' => 'Thông báo-Quyết định', 'url' => ['thongbaoquyetdinh/index']];
+            $menuItems[] = '<li style="margin-top: 10px;">'
+//        . Html::beginForm(['/site/search'],'get',['class'=>'input-group'])
+//        . Html::textInput('search',NULL,['class'=>'form-control','style'=>'border-radius:5px'])
+//        . Html::submitButton('<i class="glyphicon glyphicon-search"></i>',['class'=>'btn btn-default','style'=>'position: absolute;
+//    right: 0px;
+//    top:2px;
+//    z-index: 9999;
+//    background: transparent;
+//    border: none;
+//    '])
+//        . Html::endForm()
+                . Html::beginForm(['/site/timkiem'],'',['id'=>'search_mini_form','class'=>'form-inline'])
+                . Html::textInput('timkiem',NULL,['type' => 'text', 'class'=>'form-control','style'=>'border-radius:5px'])
+                . Html::submitButton('<i class="glyphicon glyphicon-search"></i>',['class'=>'btn btn-default','style'=>'position: absolute;
+        right: 0px;
+        top:2px;
+        z-index: 9999;
+        background: transparent;
+        border: none;
+        '])
+                . Html::endForm()
+                . '</li>';
+            $menuItems[] = '<li>'
+                . Html::beginForm(['/site/logout'], 'post')
+                . Html::submitButton(
+                    'Đăng xuất (' . Yii::$app->user->identity->username . ')',
+                    ['class' => 'btn btn-link logout']
+                )
+                . Html::endForm()
+                . '</li>';
 
 
 //        $menuItems[] = ['label' => 'Login', 'url' => ['/site/login']];

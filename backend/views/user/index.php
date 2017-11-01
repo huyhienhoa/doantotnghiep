@@ -8,7 +8,7 @@ use yii\widgets\Pjax;
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
 
-$this->title = 'Người dùng';
+$this->title = 'NGƯỜI DÙNG';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="user-index">
@@ -25,10 +25,11 @@ $this->params['breadcrumbs'][] = $this->title;
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
+        'summary'=>'Trang {page}/{pageCount}. Số lượng bản ghi: {totalCount}',
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
-            'id',
+//            'id',
             'username',
             'auth_key',
             'password_hash',
@@ -64,7 +65,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 'visible' => in_array(Yii::$app->user->identity->role, ['admin', 'trưởng khoa'])
             ],
 
-            ['class' => 'yii\grid\ActionColumn'],
+//            ['class' => 'yii\grid\ActionColumn'],
         ],
     ]); ?>
     <?php Pjax::end(); ?>

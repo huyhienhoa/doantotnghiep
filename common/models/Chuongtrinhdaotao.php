@@ -48,7 +48,7 @@ class Chuongtrinhdaotao extends \yii\db\ActiveRecord
             [['name', 'trinhdo_id', 'hinhthucdaotao_id', 'khoa_id', 'chuyennganh_id'], 'required', 'message' => 'Chưa điền {attribute}'],
             [['ngaybanhanh', 'created_at', 'updated_at'], 'safe'],
             [['trinhdo_id', 'hinhthucdaotao_id', 'khoa_id', 'chuyennganh_id', 'CTDT_DCHP_id'], 'integer'],
-            [['name'], 'string', 'max' => 50],
+            [['name'], 'string', 'max' => 100],
             [['cosodaotao', 'filedinhkem'], 'string', 'max' => 200],
             [['quyetdinhso'], 'string', 'max' => 45],
             [['CTDT_DCHP_id'], 'exist', 'skipOnError' => true, 'targetClass' => CtdtDchp::className(), 'targetAttribute' => ['CTDT_DCHP_id' => 'id']],

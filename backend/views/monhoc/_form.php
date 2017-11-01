@@ -15,13 +15,13 @@ use common\models\Bomon;
 
     <div class="row">
         <div class="col-md-4">
-            <?= $form->field($model, 'mamonhoc')->textInput(['maxlength' => true]) ?>
+            <?= $form->field($model, 'mamonhoc')->textInput(['maxlength' => true, 'type' => 'number']) ?>
         </div>
         <div class="col-md-4">
             <?= $form->field($model, 'tenmonhoc')->textInput(['maxlength' => true]) ?>
         </div>
         <div class="col-md-4">
-            <?= $form->field($model, 'sotinchi')->textInput() ?>
+            <?= $form->field($model, 'sotinchi')->textInput(['type' => 'number']) ?>
         </div>
     </div>
 

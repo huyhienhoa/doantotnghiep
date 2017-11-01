@@ -6,7 +6,7 @@ use yii\helpers\Html;
 /* @var $model common\models\Debaitaplon */
 
 $this->title = 'Cập nhật bản ghi: '.$model->name;
-$this->params['breadcrumbs'][] = ['label' => 'Đề bài tập lớn', 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => 'ĐỀ BÀI TẬP LỚN', 'url' => ['index']];
 $this->params['breadcrumbs'][] = ['label' => $model->name, 'url' => ['view', 'id' => $model->id]];
 $this->params['breadcrumbs'][] = 'Cập nhật';
 ?>

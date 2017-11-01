@@ -23,6 +23,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
+        'summary'=>'Trang {page}/{pageCount}. Số lượng bản ghi: {totalCount}',
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
@@ -45,6 +46,12 @@ $this->params['breadcrumbs'][] = $this->title;
                 'value'=>function($data){
                     return $data->hinhthucdaotao->name;
                 },
+                'filter'=>Html::activeDropDownList($searchModel,
+                    'hinhthucdaotao_id' ,
+                    \yii\helpers\ArrayHelper::map(\common\models\Hinhthucdaotao::find()->all(),
+                        'id','name' ),
+                    ['prompt'=>'Tất cả','class'=>'form-control']
+                ),
             ],
             [
                 'attribute'=>'trinhdo_id',
@@ -52,6 +59,12 @@ $this->params['breadcrumbs'][] = $this->title;
                 'value'=>function($data){
                     return $data->trinhdo->name;
                 },
+                'filter'=>Html::activeDropDownList($searchModel,
+                    'trinhdo_id' ,
+                    \yii\helpers\ArrayHelper::map(\common\models\Trinhdo::find()->all(),
+                        'id','name' ),
+                    ['prompt'=>'Tất cả','class'=>'form-control']
+                ),
             ],
             'filedinhkem',
 //            'loaitailieu_id',
@@ -61,7 +74,7 @@ $this->params['breadcrumbs'][] = $this->title;
             [
                 'class' => 'yii\grid\ActionColumn',
                 'template' => '<p class="text-center">{download}</p>',
-                'header' => '<p class="text-center">Download</p>',
+                'header' => '<p class="text-center">Tải về</p>',
 //                'visible' => false
             ],
             [

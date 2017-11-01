@@ -7,7 +7,7 @@ use yii\widgets\Pjax;
 /* @var $searchModel common\models\searchs\LichthiSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Lịch thi';
+$this->title = 'LỊCH THI';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="lichthi-index">
@@ -23,6 +23,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
+        'summary'=>'Trang {page}/{pageCount}. Số lượng bản ghi: {totalCount}',
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
@@ -36,6 +37,12 @@ $this->params['breadcrumbs'][] = $this->title;
                 'value'=>function($data){
                     return $data->hinhthucdaotao->name;
                 },
+                'filter'=>Html::activeDropDownList($searchModel,
+                    'hinhthucdaotao_id' ,
+                    \yii\helpers\ArrayHelper::map(\common\models\Hinhthucdaotao::find()->all(),
+                        'id','name' ),
+                    ['prompt'=>'Tất cả','class'=>'form-control']
+                ),
             ],
             [
                 'attribute'=>'hocky_id',
@@ -43,6 +50,12 @@ $this->params['breadcrumbs'][] = $this->title;
                 'value'=>function($data){
                     return $data->hocky->name;
                 },
+                'filter'=>Html::activeDropDownList($searchModel,
+                    'hocky_id' ,
+                    \yii\helpers\ArrayHelper::map(\common\models\Hocky::find()->all(),
+                        'id','name' ),
+                    ['prompt'=>'Tất cả','class'=>'form-control']
+                ),
             ],
             [
                 'attribute'=>'namhoc_id',
@@ -50,6 +63,12 @@ $this->params['breadcrumbs'][] = $this->title;
                 'value'=>function($data){
                     return $data->namhoc->name;
                 },
+                'filter'=>Html::activeDropDownList($searchModel,
+                    'namhoc_id' ,
+                    \yii\helpers\ArrayHelper::map(\common\models\Namhoc::find()->all(),
+                        'id','name' ),
+                    ['prompt'=>'Tất cả','class'=>'form-control']
+                ),
             ],
             'filedinhkem',
             //
@@ -59,7 +78,7 @@ $this->params['breadcrumbs'][] = $this->title;
             [
                 'class' => 'yii\grid\ActionColumn',
                 'template' => '<p class="text-center">{download}</p>',
-                'header' => '<p class="text-center">Download</p>',
+                'header' => '<p class="text-center">Tải về</p>',
 //                'visible' => false
             ],
             [

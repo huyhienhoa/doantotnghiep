@@ -43,7 +43,7 @@ class Phancongcoithi extends \yii\db\ActiveRecord
             [['created_at', 'updated_at'], 'safe'],
             [['hocky_id', 'namhoc_id', 'bomon_id'], 'required', 'message' => 'Chưa điền {attribute}'],
             [['hocky_id', 'namhoc_id', 'bomon_id', 'DBTL_DCOT_LT_PCCT_id'], 'integer'],
-            [['name'], 'string', 'max' => 50],
+            [['name'], 'string', 'max' => 100],
             [['filedinhkem'], 'string', 'max' => 200],
             [['DBTL_DCOT_LT_PCCT_id'], 'exist', 'skipOnError' => true, 'targetClass' => DbtlDcotLtPcct::className(), 'targetAttribute' => ['DBTL_DCOT_LT_PCCT_id' => 'id']],
             [['bomon_id'], 'exist', 'skipOnError' => true, 'targetClass' => Bomon::className(), 'targetAttribute' => ['bomon_id' => 'id']],

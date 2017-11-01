@@ -7,7 +7,7 @@ use yii\widgets\Pjax;
 /* @var $searchModel common\models\searchs\DapanSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Đáp án';
+$this->title = 'ĐÁP ÁN';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="dapan-index">
@@ -23,6 +23,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
+        'summary'=>'Trang {page}/{pageCount}. Số lượng bản ghi: {totalCount}',
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
@@ -34,6 +35,12 @@ $this->params['breadcrumbs'][] = $this->title;
                 'value'=>function($data){
                     return $data->nganhangdethi->name;
                 },
+                'filter'=>Html::activeDropDownList($searchModel,
+                    'nganhangdethi_id' ,
+                    \yii\helpers\ArrayHelper::map(\common\models\Nganhangdethi::find()->all(),
+                        'id','name' ),
+                    ['prompt'=>'Tất cả','class'=>'form-control']
+                ),
             ],
             'filedinhkem',
 //            'created_at',
@@ -45,7 +52,7 @@ $this->params['breadcrumbs'][] = $this->title;
             [
                 'class' => 'yii\grid\ActionColumn',
                 'template' => '<p class="text-center">{download}</p>',
-                'header' => '<p class="text-center">Download</p>',
+                'header' => '<p class="text-center">Tải về</p>',
 //                'visible' => false
             ],
             [
@@ -66,7 +73,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 'header' => '<p class="text-center">Xóa</p>',
                 'visible' => in_array(Yii::$app->user->identity->role, ['admin', 'trưởng bộ môn'])
             ],
-            ['class' => 'yii\grid\ActionColumn'],
+//            ['class' => 'yii\grid\ActionColumn'],
         ],
     ]); ?>
     <?php Pjax::end(); ?>

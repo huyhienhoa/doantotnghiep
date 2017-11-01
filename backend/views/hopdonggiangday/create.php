@@ -7,7 +7,7 @@ use yii\helpers\Html;
 /* @var $model common\models\Hopdonggiangday */
 
 $this->title = 'Thêm mới';
-$this->params['breadcrumbs'][] = ['label' => 'Hợp đồng giảng dạy', 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => 'HỢP ĐỒNG GIẢNG DẠY', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="hopdonggiangday-create">

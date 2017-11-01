@@ -47,6 +47,9 @@ class DecuongontapSearch extends Decuongontap
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
+            'pagination' => [
+                'pageSize' => 10
+            ]
         ]);
 
         $this->load($params);

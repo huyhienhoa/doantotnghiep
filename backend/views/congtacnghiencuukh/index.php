@@ -23,6 +23,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
+        'summary'=>'Trang {page}/{pageCount}. Số lượng bản ghi: {totalCount}',
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
@@ -38,6 +39,12 @@ $this->params['breadcrumbs'][] = $this->title;
                 'value'=>function($data){
                     return $data->giangvien->tengiangvien;
                 },
+                'filter'=>Html::activeDropDownList($searchModel,
+                    'giangvien_id' ,
+                    \yii\helpers\ArrayHelper::map(\common\models\Giangvien::find()->all(),
+                        'id','tengiangvien' ),
+                    ['prompt'=>'Tất cả','class'=>'form-control']
+                ),
             ],
             [
                 'attribute'=>'namhoc_id',
@@ -45,6 +52,12 @@ $this->params['breadcrumbs'][] = $this->title;
                 'value'=>function($data){
                     return $data->namhoc->name;
                 },
+                'filter'=>Html::activeDropDownList($searchModel,
+                    'namhoc_id' ,
+                    \yii\helpers\ArrayHelper::map(\common\models\Namhoc::find()->all(),
+                        'id','name' ),
+                    ['prompt'=>'Tất cả','class'=>'form-control']
+                ),
             ],
             [
                 'attribute'=>'khoa_id',
@@ -52,6 +65,12 @@ $this->params['breadcrumbs'][] = $this->title;
                 'value'=>function($data){
                     return $data->khoa->tenkhoa;
                 },
+                'filter'=>Html::activeDropDownList($searchModel,
+                    'khoa_id' ,
+                    \yii\helpers\ArrayHelper::map(\common\models\Khoa::find()->all(),
+                        'id','tenkhoa' ),
+                    ['prompt'=>'Tất cả','class'=>'form-control']
+                ),
             ],
             'filedinhkem',
 
@@ -59,7 +78,7 @@ $this->params['breadcrumbs'][] = $this->title;
             [
                 'class' => 'yii\grid\ActionColumn',
                 'template' => '<p class="text-center">{download}</p>',
-                'header' => '<p class="text-center">Download</p>',
+                'header' => '<p class="text-center">Tải về</p>',
 //                'visible' => false
             ],
             [
@@ -80,7 +99,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 'header' => '<p class="text-center">Xóa</p>',
                 'visible' => in_array(Yii::$app->user->identity->role, ['admin', 'trưởng bộ môn'])
             ],
-            ['class' => 'yii\grid\ActionColumn'],
+//            ['class' => 'yii\grid\ActionColumn'],
         ],
     ]); ?>
     <?php Pjax::end(); ?>

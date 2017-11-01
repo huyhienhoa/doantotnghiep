@@ -7,7 +7,7 @@ use yii\widgets\Pjax;
 /* @var $searchModel common\models\searchs\TrinhdoSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Trình độ';
+$this->title = 'TRÌNH ĐỘ';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="trinhdo-index">

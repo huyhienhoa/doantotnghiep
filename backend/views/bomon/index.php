@@ -7,7 +7,7 @@ use yii\widgets\Pjax;
 /* @var $searchModel common\models\searchs\BomonSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Bộ môn';
+$this->title = 'BỘ MÔN';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="bomon-index">
@@ -18,12 +18,12 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <p>
         <?= $btn_them; ?>
-        <?= Html::a('<span class="glyphicon glyphicon-plus"></span> Thêm mới', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
+        'summary'=>'Trang {page}/{pageCount}. Số lượng bản ghi: {totalCount}',
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
@@ -36,13 +36,19 @@ $this->params['breadcrumbs'][] = $this->title;
                 'value'=>function($data){
                     return $data->khoa->tenkhoa;
                 },
+                'filter'=>Html::activeDropDownList($searchModel,
+                    'khoa_id' ,
+                    \yii\helpers\ArrayHelper::map(\common\models\Khoa::find()->all(),
+                        'id','tenkhoa' ),
+                    ['prompt'=>'Tất cả','class'=>'form-control']
+                ),
             ],
 
 //            ['class' => 'yii\grid\ActionColumn'],
             [
                 'class' => 'yii\grid\ActionColumn',
                 'template' => '<p class="text-center">{download}</p>',
-                'header' => '<p class="text-center">Download</p>',
+                'header' => '<p class="text-center">Tải về</p>',
                 'visible' => false
             ],
             [

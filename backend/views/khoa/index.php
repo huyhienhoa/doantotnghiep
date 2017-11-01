@@ -7,7 +7,7 @@ use yii\widgets\Pjax;
 /* @var $searchModel common\models\searchs\KhoaSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Khoa';
+$this->title = 'KHOA';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="khoa-index">
@@ -23,6 +23,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
+        'summary'=>'Trang {page}/{pageCount}. Số lượng bản ghi: {totalCount}',
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 

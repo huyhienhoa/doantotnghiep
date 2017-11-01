@@ -6,7 +6,7 @@ use yii\helpers\Html;
 /* @var $model common\models\Bomon */
 
 $this->title = 'Cập nhật bản ghi: '.$model->tenbomon;
-$this->params['breadcrumbs'][] = ['label' => 'Bộ môn', 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => 'BỘ MÔN', 'url' => ['index']];
 $this->params['breadcrumbs'][] = ['label' => $model->tenbomon, 'url' => ['view', 'id' => $model->id]];
 $this->params['breadcrumbs'][] = 'Cập nhật';
 ?>

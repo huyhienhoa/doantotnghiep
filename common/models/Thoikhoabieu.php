@@ -43,7 +43,7 @@ class Thoikhoabieu extends \yii\db\ActiveRecord
             [['namhoc_id', 'hocky_id', 'bomon_id'], 'required', 'message' => 'Chưa điền {attribute}'],
             [['id', 'namhoc_id', 'hocky_id', 'bomon_id', 'HDGD_TKB_BPCGD__id'], 'integer'],
             [['created_at', 'updated_at'], 'safe'],
-            [['name'], 'string', 'max' => 50],
+            [['name'], 'string', 'max' => 100],
             [['filedinhkem'], 'string', 'max' => 200],
             [['id'], 'unique'],
             [['HDGD_TKB_BPCGD__id'], 'exist', 'skipOnError' => true, 'targetClass' => HdgdTkbBpcgd::className(), 'targetAttribute' => ['HDGD_TKB_BPCGD__id' => 'id']],

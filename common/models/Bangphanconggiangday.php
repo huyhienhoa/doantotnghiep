@@ -44,7 +44,7 @@ class Bangphanconggiangday extends \yii\db\ActiveRecord
             [['name', 'bomon_id', 'hocky_id', 'namhoc_id'], 'required', 'message' => 'Chưa điền {attribute}'],
             [['created_at', 'updated_at', 'ngayky'], 'safe'],
             [['bomon_id', 'hocky_id', 'namhoc_id', 'HDGD_TKB_BPCGD__id'], 'integer'],
-            [['name'], 'string', 'max' => 50],
+            [['name'], 'string', 'max' => 100],
             [['filedinhkem'], 'string', 'max' => 200],
             [['HDGD_TKB_BPCGD__id'], 'exist', 'skipOnError' => true, 'targetClass' => HdgdTkbBpcgd::className(), 'targetAttribute' => ['HDGD_TKB_BPCGD__id' => 'id']],
             [['bomon_id'], 'exist', 'skipOnError' => true, 'targetClass' => Bomon::className(), 'targetAttribute' => ['bomon_id' => 'id']],

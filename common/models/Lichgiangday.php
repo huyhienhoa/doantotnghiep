@@ -46,7 +46,7 @@ class Lichgiangday extends \yii\db\ActiveRecord
             [['name', 'monhoc_id', 'hocky_id', 'namhoc_id', 'giangvien_id'], 'required', 'message' => 'Chưa điền {attribute}'],
             [['created_at', 'updated_at'], 'safe'],
             [['monhoc_id', 'hocky_id', 'namhoc_id', 'giangvien_id', 'loaitailieu_id'], 'integer'],
-            [['name'], 'string', 'max' => 50],
+            [['name'], 'string', 'max' => 100],
             [['nhomhocphan'], 'string', 'max' => 10],
             [['filedinhkem'], 'string', 'max' => 200],
             [['giangvien_id'], 'exist', 'skipOnError' => true, 'targetClass' => Giangvien::className(), 'targetAttribute' => ['giangvien_id' => 'id']],
