@@ -6,7 +6,7 @@ use yii\helpers\Html;
 /* @var $model common\models\Monhoc */
 
 $this->title = 'Cập nhật bản ghi: '.$model->tenmonhoc;
-$this->params['breadcrumbs'][] = ['label' => 'Môn học', 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => 'MÔN HỌC', 'url' => ['index']];
 $this->params['breadcrumbs'][] = ['label' => $model->tenmonhoc, 'url' => ['view', 'id' => $model->id]];
 $this->params['breadcrumbs'][] = 'Cập nhật';
 ?>

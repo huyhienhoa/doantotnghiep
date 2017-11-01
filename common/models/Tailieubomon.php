@@ -39,7 +39,7 @@ class Tailieubomon extends \yii\db\ActiveRecord
             [['name', 'bomon_id'], 'required', 'message' => 'Chưa điền {attribute}'],
             [['created_at', 'updated_at'], 'safe'],
             [['loaitailieu_id', 'bomon_id'], 'integer'],
-            [['name'], 'string', 'max' => 50],
+            [['name'], 'string', 'max' => 100],
             [['filedinhkem'], 'string', 'max' => 200],
             [['bomon_id'], 'exist', 'skipOnError' => true, 'targetClass' => Bomon::className(), 'targetAttribute' => ['bomon_id' => 'id']],
             [['loaitailieu_id'], 'exist', 'skipOnError' => true, 'targetClass' => Loaitailieu::className(), 'targetAttribute' => ['loaitailieu_id' => 'id']],

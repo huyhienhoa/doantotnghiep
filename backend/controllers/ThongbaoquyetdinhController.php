@@ -40,7 +40,7 @@ class ThongbaoquyetdinhController extends Controller
                         'actions' => ['create', 'update', 'delete'],
                         'allow' => true,
                         'matchCallback' => function($rule, $action){
-                            if (in_array(Yii::$app->user->identity->role, ['admin', 'trưởng bộ môn']))
+                            if (in_array(Yii::$app->user->identity->role, ['admin']))
                                 return true;
                             return false;
                         }

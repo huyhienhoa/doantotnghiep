@@ -6,7 +6,7 @@ use yii\helpers\Html;
 /* @var $model common\models\Thidua */
 
 $this->title = 'Cập nhật bản ghi: '.$model->name;
-$this->params['breadcrumbs'][] = ['label' => 'Thi đua', 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => 'THI ĐUA', 'url' => ['index']];
 $this->params['breadcrumbs'][] = ['label' => $model->name, 'url' => ['view', 'id' => $model->id]];
 $this->params['breadcrumbs'][] = 'Cập nhật';
 ?>

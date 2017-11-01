@@ -7,7 +7,7 @@ use yii\grid\GridView;
 /* @var $searchModel common\models\searchs\GiangvienSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Giảng viên';
+$this->title = 'GIẢNG VIÊN';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="giangvien-index">
@@ -22,10 +22,11 @@ $this->params['breadcrumbs'][] = $this->title;
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
+        'summary'=>'Trang {page}/{pageCount}. Số lượng bản ghi: {totalCount}',
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
-            'id',
+//            'id',
             'magiangvien',
             'tengiangvien',
             [
@@ -34,6 +35,12 @@ $this->params['breadcrumbs'][] = $this->title;
                 'value'=>function($data){
                     return $data->bomon->tenbomon;
                 },
+                'filter'=>Html::activeDropDownList($searchModel,
+                    'bomon_id' ,
+                    \yii\helpers\ArrayHelper::map(\common\models\Bomon::find()->all(),
+                        'id','tenbomon' ),
+                    ['prompt'=>'Tất cả','class'=>'form-control']
+                ),
             ],
 
 //            ['class' => 'yii\grid\ActionColumn'],

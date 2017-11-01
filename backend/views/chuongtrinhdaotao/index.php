@@ -7,7 +7,7 @@ use yii\widgets\Pjax;
 /* @var $searchModel common\models\searchs\ChuongtrinhdaotaoSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Chương trình đào tạo';
+$this->title = 'CHƯƠNG TRÌNH ĐÀO TẠO';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="chuongtrinhdaotao-index">
@@ -23,6 +23,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
+        'summary'=>'Trang {page}/{pageCount}. Số lượng bản ghi: {totalCount}',
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
@@ -50,7 +51,7 @@ $this->params['breadcrumbs'][] = $this->title;
             [
                 'class' => 'yii\grid\ActionColumn',
                 'template' => '<p class="text-center">{download}</p>',
-                'header' => '<p class="text-center">Download</p>',
+                'header' => '<p class="text-center">Tải về</p>',
 //                'visible' => false
             ],
             [
@@ -71,7 +72,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 'header' => '<p class="text-center">Xóa</p>',
                 'visible' => in_array(Yii::$app->user->identity->role, ['admin', 'trưởng bộ môn'])
             ],
-            ['class' => 'yii\grid\ActionColumn'],
+//            ['class' => 'yii\grid\ActionColumn'],
         ],
     ]); ?>
     <?php Pjax::end(); ?>

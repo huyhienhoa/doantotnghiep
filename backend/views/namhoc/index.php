@@ -7,7 +7,7 @@ use yii\widgets\Pjax;
 /* @var $searchModel common\models\searchs\NamhocSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Năm học';
+$this->title = 'NĂM HỌC';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="namhoc-index">
@@ -18,12 +18,12 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <p>
         <?= $btn_them; ?>
-        <?= Html::a('<span class="glyphicon glyphicon-plus"></span> Thêm mới', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
+        'summary'=>'Trang {page}/{pageCount}. Số lượng bản ghi: {totalCount}',
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 

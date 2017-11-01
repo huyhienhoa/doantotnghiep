@@ -7,7 +7,7 @@ use yii\widgets\Pjax;
 /* @var $searchModel common\models\searchs\MonhocSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Môn học';
+$this->title = 'MÔN HỌC';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="monhoc-index">
@@ -23,10 +23,11 @@ $this->params['breadcrumbs'][] = $this->title;
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
+        'summary'=>'Trang {page}/{pageCount}. Số lượng bản ghi: {totalCount}',
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
-            'id',
+    //            'id',
             'mamonhoc',
             'tenmonhoc',
             'sotinchi',
@@ -36,6 +37,12 @@ $this->params['breadcrumbs'][] = $this->title;
                 'value'=>function($data){
                     return $data->bomon->tenbomon;
                 },
+                'filter'=>Html::activeDropDownList($searchModel,
+                    'bomon_id' ,
+                    \yii\helpers\ArrayHelper::map(\common\models\Bomon::find()->all(),
+                        'id','tenbomon' ),
+                    ['prompt'=>'Tất cả','class'=>'form-control']
+                ),
             ],
             //'thuchanh',
             //'baitaplon',

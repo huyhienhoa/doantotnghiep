@@ -43,7 +43,7 @@ class Lichthi extends \yii\db\ActiveRecord
             [['created_at', 'updated_at'], 'safe'],
             [['hinhthucdaotao_id', 'hocky_id', 'namhoc_id'], 'required', 'message' => 'Chưa điền {attribute}'],
             [['hinhthucdaotao_id', 'hocky_id', 'namhoc_id', 'DBTL_DCOT_LT_PCCT_id'], 'integer'],
-            [['name'], 'string', 'max' => 50],
+            [['name'], 'string', 'max' => 100],
             [['filedinhkem'], 'string', 'max' => 200],
             [['DBTL_DCOT_LT_PCCT_id'], 'exist', 'skipOnError' => true, 'targetClass' => DbtlDcotLtPcct::className(), 'targetAttribute' => ['DBTL_DCOT_LT_PCCT_id' => 'id']],
             [['hinhthucdaotao_id'], 'exist', 'skipOnError' => true, 'targetClass' => Hinhthucdaotao::className(), 'targetAttribute' => ['hinhthucdaotao_id' => 'id']],

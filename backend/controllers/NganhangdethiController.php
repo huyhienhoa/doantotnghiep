@@ -40,7 +40,7 @@ class NganhangdethiController extends Controller
                         'actions' => ['create', 'update', 'delete'],
                         'allow' => true,
                         'matchCallback' => function($rule, $action){
-                            if (in_array(Yii::$app->user->identity->role, ['admin', 'trưởng bộ môn']))
+                            if (in_array(Yii::$app->user->identity->role, ['trưởng bộ môn']))
                                 return true;
                             return false;
                         }
@@ -49,7 +49,7 @@ class NganhangdethiController extends Controller
                         'actions' => ['index'],
                         'allow' => true,
                         'matchCallback' => function($rule, $action){
-                            if (in_array(Yii::$app->user->identity->role, ['admin', 'trưởng bộ môn', 'trưởng khoa']))
+                            if (in_array(Yii::$app->user->identity->role, ['trưởng bộ môn', 'trưởng khoa']))
                                 return true;
                             return false;
                         }

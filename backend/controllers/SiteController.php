@@ -153,5 +153,8 @@ class SiteController extends Controller
         ]);
     }
 
+    public function actionTimkiem(){
+        $giatritimkiem = $_POST['giatritimkiem'];
+    }
     
 }

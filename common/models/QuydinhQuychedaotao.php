@@ -41,7 +41,7 @@ class QuydinhQuychedaotao extends \yii\db\ActiveRecord
             [['name', 'namhoc_id'], 'required','message' => 'Chưa điền {attribute}'],
             [['ngaybanhanh', 'created_at', 'updated_at'], 'safe'],
             [['namhoc_id', 'loaitailieu_id'], 'integer'],
-            [['name'], 'string', 'max' => 50],
+            [['name'], 'string', 'max' => 100],
             [['soquyetdinh'], 'string', 'max' => 25],
             [['filedinhkem'], 'string', 'max' => 200],
             [['loaitailieu_id'], 'exist', 'skipOnError' => true, 'targetClass' => Loaitailieu::className(), 'targetAttribute' => ['loaitailieu_id' => 'id']],

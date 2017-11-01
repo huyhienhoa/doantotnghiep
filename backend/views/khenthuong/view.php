@@ -7,7 +7,7 @@ use yii\widgets\DetailView;
 /* @var $model common\models\Khenthuong */
 
 $this->title = $model->name;
-$this->params['breadcrumbs'][] = ['label' => 'Khen thưởng', 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => 'KHEN THƯỞNG', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="khenthuong-view">
@@ -15,7 +15,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
-        <?= Html::a('<span class="glyphicon glyphicon-edit"></span> Cập nhật', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
+        <?= Html::a('<span class="glyphicon glyphicon-edit"></span> Sửa', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
         <?= Html::a('<span class="glyphicon glyphicon-trash"></span> Xóa', ['delete', 'id' => $model->id], [
             'class' => 'btn btn-danger',
             'data' => [

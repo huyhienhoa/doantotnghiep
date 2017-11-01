@@ -38,7 +38,7 @@ class ThongbaoQuyetdinh extends \yii\db\ActiveRecord
             [['name', 'hinhthucdaotao_id', 'trinhdo_id'], 'required', 'message' => 'Chưa điền {attribute}'],
             [['ngaycohieuluc', 'created_at', 'updated_at'], 'safe'],
             [['hinhthucdaotao_id', 'trinhdo_id', 'loaitailieu_id'], 'integer'],
-            [['name'], 'string', 'max' => 50],
+            [['name'], 'string', 'max' => 100],
             [['filedinhkem'], 'string', 'max' => 200],
             [['loaitailieu_id'], 'exist', 'skipOnError' => true, 'targetClass' => Loaitailieu::className(), 'targetAttribute' => ['loaitailieu_id' => 'id']],
             [['hinhthucdaotao_id'], 'exist', 'skipOnError' => true, 'targetClass' => Hinhthucdaotao::className(), 'targetAttribute' => ['hinhthucdaotao_id' => 'id']],

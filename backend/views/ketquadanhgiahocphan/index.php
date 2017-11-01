@@ -23,6 +23,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
+        'summary'=>'Trang {page}/{pageCount}. Số lượng bản ghi: {totalCount}',
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
@@ -45,6 +46,12 @@ $this->params['breadcrumbs'][] = $this->title;
                 'value'=>function($data){
                     return $data->monhoc->tenmonhoc;
                 },
+                'filter'=>Html::activeDropDownList($searchModel,
+                    'monhoc_id' ,
+                    \yii\helpers\ArrayHelper::map(\common\models\Monhoc::find()->all(),
+                        'id','tenmonhoc' ),
+                    ['prompt'=>'Tất cả','class'=>'form-control']
+                ),
             ],
             'nhomhocphan',
             'filedinhkem',
@@ -57,7 +64,7 @@ $this->params['breadcrumbs'][] = $this->title;
             [
                 'class' => 'yii\grid\ActionColumn',
                 'template' => '<p class="text-center">{download}</p>',
-                'header' => '<p class="text-center">Download</p>',
+                'header' => '<p class="text-center">Tải về</p>',
 //                'visible' => false
             ],
             [

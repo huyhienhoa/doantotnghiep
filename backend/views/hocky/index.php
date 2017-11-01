@@ -7,7 +7,7 @@ use yii\widgets\Pjax;
 /* @var $searchModel common\models\searchs\HockySearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Học kỳ';
+$this->title = 'HỌC KỲ';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="hocky-index">
@@ -23,6 +23,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
+        'summary'=>'Trang {page}/{pageCount}. Số lượng bản ghi: {totalCount}',
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 

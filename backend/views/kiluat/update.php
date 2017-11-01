@@ -6,7 +6,7 @@ use yii\helpers\Html;
 /* @var $model common\models\Kiluat */
 
 $this->title = 'Cập nhật bản ghi: '.$model->name;
-$this->params['breadcrumbs'][] = ['label' => 'Kỉ luật', 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => 'KỈ LUẬT', 'url' => ['index']];
 $this->params['breadcrumbs'][] = ['label' => $model->name, 'url' => ['view', 'id' => $model->id]];
 $this->params['breadcrumbs'][] = 'Cập nhật';
 ?>

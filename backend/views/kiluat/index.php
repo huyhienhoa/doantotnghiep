@@ -7,7 +7,7 @@ use yii\widgets\Pjax;
 /* @var $searchModel common\models\searchs\KiluatSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Kỉ luật';
+$this->title = 'KỈ LUẬT';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="kiluat-index">
@@ -18,12 +18,12 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <p>
         <?= $btn_them; ?>
-        <?= Html::a('<span class="glyphicon glyphicon-plus"></span> Thêm mới', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
+        'summary'=>'Trang {page}/{pageCount}. Số lượng bản ghi: {totalCount}',
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
@@ -37,6 +37,12 @@ $this->params['breadcrumbs'][] = $this->title;
                 'value'=>function($data){
                     return $data->giangvien->tengiangvien;
                 },
+                'filter'=>Html::activeDropDownList($searchModel,
+                    'giangvien_id' ,
+                    \yii\helpers\ArrayHelper::map(\common\models\Giangvien::find()->all(),
+                        'id','tengiangvien' ),
+                    ['prompt'=>'Tất cả','class'=>'form-control']
+                ),
             ],
             [
                 'attribute'=>'namhoc_id',
@@ -44,6 +50,12 @@ $this->params['breadcrumbs'][] = $this->title;
                 'value'=>function($data){
                     return $data->namhoc->name;
                 },
+                'filter'=>Html::activeDropDownList($searchModel,
+                    'namhoc_id' ,
+                    \yii\helpers\ArrayHelper::map(\common\models\Namhoc::find()->all(),
+                        'id','name' ),
+                    ['prompt'=>'Tất cả','class'=>'form-control']
+                ),
             ],
             'filedinhkem',
 
@@ -53,7 +65,7 @@ $this->params['breadcrumbs'][] = $this->title;
             [
                 'class' => 'yii\grid\ActionColumn',
                 'template' => '<p class="text-center">{download}</p>',
-                'header' => '<p class="text-center">Download</p>',
+                'header' => '<p class="text-center">Tải về</p>',
 //                'visible' => false
             ],
             [

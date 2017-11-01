@@ -7,7 +7,7 @@ use yii\widgets\Pjax;
 /* @var $searchModel common\models\searchs\NganhangdethiSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Ngân hàng đề thi';
+$this->title = 'NGÂN HÀNG ĐỀ THI';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="nganhangdethi-index">
@@ -23,6 +23,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
+        'summary'=>'Trang {page}/{pageCount}. Số lượng bản ghi: {totalCount}',
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
@@ -37,6 +38,12 @@ $this->params['breadcrumbs'][] = $this->title;
                 'value'=>function($data){
                     return $data->namhoc->name;
                 },
+                'filter'=>Html::activeDropDownList($searchModel,
+                    'namhoc_id' ,
+                    \yii\helpers\ArrayHelper::map(\common\models\Namhoc::find()->all(),
+                        'id','name' ),
+                    ['prompt'=>'Tất cả','class'=>'form-control']
+                ),
             ],
             [
                 'attribute'=>'hocky_id',
@@ -44,6 +51,12 @@ $this->params['breadcrumbs'][] = $this->title;
                 'value'=>function($data){
                     return $data->hocky->name;
                 },
+                'filter'=>Html::activeDropDownList($searchModel,
+                    'hocky_id' ,
+                    \yii\helpers\ArrayHelper::map(\common\models\Hocky::find()->all(),
+                        'id','name' ),
+                    ['prompt'=>'Tất cả','class'=>'form-control']
+                ),
             ],
             //'trinhdo_id',
             //'hinhthucdaotao_id',
@@ -53,6 +66,12 @@ $this->params['breadcrumbs'][] = $this->title;
                 'value'=>function($data){
                     return $data->monhoc->tenmonhoc;
                 },
+                'filter'=>Html::activeDropDownList($searchModel,
+                    'monhoc_id' ,
+                    \yii\helpers\ArrayHelper::map(\common\models\Monhoc::find()->all(),
+                        'id','tenmonhoc' ),
+                    ['prompt'=>'Tất cả','class'=>'form-control']
+                ),
             ],
             'filedinhkem',
             //'NHDT_DA_id',
@@ -61,7 +80,7 @@ $this->params['breadcrumbs'][] = $this->title;
             [
                 'class' => 'yii\grid\ActionColumn',
                 'template' => '<p class="text-center">{download}</p>',
-                'header' => '<p class="text-center">Download</p>',
+                'header' => '<p class="text-center">Tải về</p>',
 //                'visible' => false
             ],
             [
@@ -82,7 +101,6 @@ $this->params['breadcrumbs'][] = $this->title;
                 'header' => '<p class="text-center">Xóa</p>',
                 'visible' => in_array(Yii::$app->user->identity->role, ['admin', 'trưởng bộ môn'])
             ],
-            ['class' => 'yii\grid\ActionColumn'],
         ],
     ]); ?>
     <?php Pjax::end(); ?>

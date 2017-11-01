@@ -7,7 +7,7 @@ use yii\widgets\Pjax;
 /* @var $searchModel common\models\searchs\ThoikhoabieuSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Thời khóa biểu';
+$this->title = 'THỜI KHÓA BIỂU';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="thoikhoabieu-index">
@@ -23,6 +23,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
+        'summary'=>'Trang {page}/{pageCount}. Số lượng bản ghi: {totalCount}',
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
@@ -34,6 +35,12 @@ $this->params['breadcrumbs'][] = $this->title;
                 'value'=>function($data){
                     return $data->namhoc->name;
                 },
+                'filter'=>Html::activeDropDownList($searchModel,
+                    'namhoc_id' ,
+                    \yii\helpers\ArrayHelper::map(\common\models\Namhoc::find()->all(),
+                        'id','name' ),
+                    ['prompt'=>'Tất cả','class'=>'form-control']
+                ),
             ],
             [
                 'attribute'=>'hocky_id',
@@ -41,6 +48,12 @@ $this->params['breadcrumbs'][] = $this->title;
                 'value'=>function($data){
                     return $data->hocky->name;
                 },
+                'filter'=>Html::activeDropDownList($searchModel,
+                    'hocky_id' ,
+                    \yii\helpers\ArrayHelper::map(\common\models\Hocky::find()->all(),
+                        'id','name' ),
+                    ['prompt'=>'Tất cả','class'=>'form-control']
+                ),
             ],
             [
                 'attribute'=>'bomon_id',
@@ -48,6 +61,12 @@ $this->params['breadcrumbs'][] = $this->title;
                 'value'=>function($data){
                     return $data->bomon->tenbomon;
                 },
+                'filter'=>Html::activeDropDownList($searchModel,
+                    'bomon_id' ,
+                    \yii\helpers\ArrayHelper::map(\common\models\Bomon::find()->all(),
+                        'id','tenbomon' ),
+                    ['prompt'=>'Tất cả','class'=>'form-control']
+                ),
             ],
             //'created_at',
             //'updated_at',
@@ -58,7 +77,7 @@ $this->params['breadcrumbs'][] = $this->title;
             [
                 'class' => 'yii\grid\ActionColumn',
                 'template' => '<p class="text-center">{download}</p>',
-                'header' => '<p class="text-center">Download</p>',
+                'header' => '<p class="text-center">Tải về</p>',
 //                'visible' => false
             ],
             [

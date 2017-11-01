@@ -47,6 +47,9 @@ class GiangvienSearch extends Giangvien
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
+            'pagination' => [
+                'pageSize' => 10
+            ]
         ]);
 
         $this->load($params);
