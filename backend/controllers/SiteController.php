@@ -66,6 +66,12 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
+        if (in_array(Yii::$app->user->identity->role,['admin'])){
+            return $this->render('giaodienadmin');
+        }
+//        if (in_array(Yii::$app->user->identity->role,['trưởng khoa'])){
+//            return $this->render('giaodientruongkhoa');
+//        }
         $loaitailieus = Loaitailieu::find()->all();
         return $this->render('index',
             [

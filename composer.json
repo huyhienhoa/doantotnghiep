@@ -23,7 +23,8 @@
         "dmstr/yii2-adminlte-asset": "^2.1",
         "kartik-v/yii2-grid": "@dev",
         "kartik-v/yii2-krajee-base": "@dev",
-        "kartik-v/yii2-widget-fileinput": "@dev"
+        "kartik-v/yii2-widget-fileinput": "@dev",
+        "chrisb34/yii2-report-grid": "@dev"
 
     },
     "require-dev": {

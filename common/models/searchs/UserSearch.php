@@ -52,6 +52,8 @@ class UserSearch extends User
             ]
         ]);
 
+        $query->orderBy(['role' => SORT_DESC]);
+
         $this->load($params);
 
         if (!$this->validate()) {

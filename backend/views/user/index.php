@@ -7,7 +7,6 @@ use yii\widgets\Pjax;
 /* @var $searchModel common\models\searchs\UserSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-
 $this->title = 'NGƯỜI DÙNG';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
@@ -31,14 +30,14 @@ $this->params['breadcrumbs'][] = $this->title;
 
 //            'id',
             'username',
-            'auth_key',
-            'password_hash',
-            'password_reset_token',
+//            'auth_key',
+//            'password_hash',
+//            'password_reset_token',
             //'email:email',
-            //'status',
+            'status',
             //'created_at',
             //'updated_at',
-            //'role',
+            'role',
 
             [
                 'class' => 'yii\grid\ActionColumn',
