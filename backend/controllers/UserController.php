@@ -26,7 +26,7 @@ class UserController extends Controller
                 'class' => AccessControl::className(),
                 'rules' => [
                     [
-                        'actions' => ['login', 'error'],
+                        'actions' => ['login', 'error', 'changePassword'],
                         'allow' => true,
                     ],
                     [
@@ -115,17 +115,40 @@ class UserController extends Controller
      * @param integer $id
      * @return mixed
      */
-    public function actionUpdate($id)
+//    public function actionUpdate($id)
+//    {
+//        $model = $this->findModel($id);
+//
+//        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+//            return $this->redirect(['view', 'id' => $model->id]);
+//        }
+//
+//        return $this->render('update', [
+//            'model' => $model,
+//        ]);
+//    }
+    public function actionChangePassword()
     {
-        $model = $this->findModel($id);
-
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+        $model = new ChangePasswordForm;
+        if(isset($_POST['ajax']) && $_POST['ajax']==='login-form')
+        {
+            echo CActiveForm::validate($model);
+            Yii::app()->end();
         }
 
-        return $this->render('update', [
-            'model' => $model,
-        ]);
+        // collect user input data
+        if(isset($_POST['ChangePasswordForm']))
+        {
+            $model->attributes=$_POST['ChangePasswordForm'];
+            // Validar input del usuario y cambiar contraseña.
+            if($model->validate() && $model->changePassword())
+            {
+                Yii::app()->user->setFlash('success', '<strong>Éxito!</strong> Su contraseña fue cambiada.');
+                $this->redirect( $this->action->id );
+            }
+        }
+        // Mostrar formulario de cambio de contraseña.
+        $this->render('changePassword',array('model'=>$model));
     }
 
     /**

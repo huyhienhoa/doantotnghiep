@@ -159,6 +159,9 @@ class SiteController extends Controller
         ]);
     }
 
+    public function actionChangePassword(){
+        
+    }
     public function actionTimkiem(){
         $giatritimkiem = $_POST['giatritimkiem'];
     }

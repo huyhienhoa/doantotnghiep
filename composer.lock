@@ -4,8 +4,49 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "f38ba3c51eef1d1a94a227635ada1a8f",
+
+    "content-hash": "2d009db6405bc27df113e445340d4a67",
     "packages": [
+        {
+            "name": "almasaeed2010/adminlte",
+            "version": "v2.4.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/almasaeed2010/AdminLTE.git",
+                "reference": "156f56c3c183a3b8486c47b122c7fa8819510a90"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/almasaeed2010/AdminLTE/zipball/156f56c3c183a3b8486c47b122c7fa8819510a90",
+                "reference": "156f56c3c183a3b8486c47b122c7fa8819510a90",
+                "shasum": ""
+            },
+            "type": "library",
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Abdullah Almsaeed",
+                    "email": "abdullah@almsaeedstudio.com"
+                }
+            ],
+            "description": "AdminLTE - admin control panel and dashboard that's based on Bootstrap 3",
+            "homepage": "https://adminlte.io/",
+            "keywords": [
+                "JS",
+                "admin",
+                "back-end",
+                "css",
+                "less",
+                "responsive",
+                "template",
+                "theme",
+                "web"
+            ],
+            "time": "2017-10-09T16:32:18+00:00"
+        },
         {
             "name": "bower-asset/bootstrap",
             "version": "v3.3.7",
@@ -29,11 +70,38 @@
             ]
         },
         {
+            "name": "bower-asset/bootstrap3-dialog",
+            "version": "v1.35.4",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/nakupanda/bootstrap3-dialog.git",
+                "reference": "3dd11d586f78de75356af418907ec6e3b347377c"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/nakupanda/bootstrap3-dialog/zipball/3dd11d586f78de75356af418907ec6e3b347377c",
+                "reference": "3dd11d586f78de75356af418907ec6e3b347377c",
+                "shasum": null
+            },
+            "require": {
+                "bower-asset/bootstrap": ">=3.1.0",
+                "bower-asset/jquery": ">=1.9.0"
+            },
+            "type": "bower-asset",
+            "license": [
+                "MIT"
+            ]
+        },
+        {
             "name": "bower-asset/inputmask",
             "version": "3.3.10",
             "source": {
                 "type": "git",
+<<<<<<< HEAD
+                "url": "git@github.com:RobinHerbots/Inputmask.git",
+=======
                 "url": "https://github.com/RobinHerbots/Inputmask.git",
+>>>>>>> 0709c6068aafe3c490d4ecbd9c1afb5a0e297fb6
                 "reference": "14873e5775964275d13621cbe2b52e4448af3707"
             },
             "dist": {
@@ -168,6 +236,20 @@
             "time": "2017-08-22T10:13:04+00:00"
         },
         {
+<<<<<<< HEAD
+            "name": "cebe/yii2-gravatar",
+            "version": "1.1",
+            "target-dir": "cebe/gravatar",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/cebe/yii2-gravatar.git",
+                "reference": "c9c01bd14c9bdee9e5ae1ef1aad23f80c182c057"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/cebe/yii2-gravatar/zipball/c9c01bd14c9bdee9e5ae1ef1aad23f80c182c057",
+                "reference": "c9c01bd14c9bdee9e5ae1ef1aad23f80c182c057",
+=======
             "name": "chrisb34/yii2-report-grid",
             "version": "dev-master",
             "source": {
@@ -179,6 +261,7 @@
                 "type": "zip",
                 "url": "https://api.github.com/repos/chrisb34/yii2-reportgrid/zipball/59812a2b5b699483fe92392cfe5a6059a7fc4aa7",
                 "reference": "59812a2b5b699483fe92392cfe5a6059a7fc4aa7",
+>>>>>>> 0709c6068aafe3c490d4ecbd9c1afb5a0e297fb6
                 "shasum": ""
             },
             "require": {
@@ -186,8 +269,64 @@
             },
             "type": "yii2-extension",
             "autoload": {
+<<<<<<< HEAD
+                "psr-0": {
+                    "cebe\\gravatar\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Carsten Brandt",
+                    "email": "mail@cebe.cc",
+                    "homepage": "http://cebe.cc/",
+                    "role": "Core framework development"
+                }
+            ],
+            "description": "Gravatar Widget for Yii 2",
+            "keywords": [
+                "gravatar",
+                "yii"
+            ],
+            "time": "2013-12-10T17:49:58+00:00"
+        },
+        {
+            "name": "dmstr/yii2-adminlte-asset",
+            "version": "2.5.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/dmstr/yii2-adminlte-asset.git",
+                "reference": "653cf20aef352a56d38303e6c2197a851cb15f6f"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/dmstr/yii2-adminlte-asset/zipball/653cf20aef352a56d38303e6c2197a851cb15f6f",
+                "reference": "653cf20aef352a56d38303e6c2197a851cb15f6f",
+                "shasum": ""
+            },
+            "require": {
+                "almasaeed2010/adminlte": "^2.4.0",
+                "cebe/yii2-gravatar": "1.*",
+                "rmrevin/yii2-fontawesome": "~2.9",
+                "yiisoft/yii2": "2.*",
+                "yiisoft/yii2-bootstrap": "~2.0.0"
+            },
+            "type": "yii2-extension",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "dmstr\\": ""
+=======
                 "psr-4": {
                     "chrisb34\\ReportGrid\\": ""
+>>>>>>> 0709c6068aafe3c490d4ecbd9c1afb5a0e297fb6
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -196,6 +335,29 @@
             ],
             "authors": [
                 {
+<<<<<<< HEAD
+                    "name": "Tobias Munk",
+                    "email": "tobias@diemeisterei.de"
+                },
+                {
+                    "name": "Evgeniy Tkachenko",
+                    "email": "et.coder@gmail.com"
+                }
+            ],
+            "description": "AdminLTE backend theme asset bundle for Yii 2.0 Framework",
+            "keywords": [
+                "AdminLTE",
+                "admin",
+                "asset",
+                "backend",
+                "css",
+                "extension",
+                "less",
+                "theme",
+                "yii2"
+            ],
+            "time": "2017-10-12T06:10:53+00:00"
+=======
                     "name": "Chris Backhouse",
                     "email": "support@chris-backhouse.com"
                 }
@@ -209,6 +371,7 @@
                 "yii2"
             ],
             "time": "2017-09-18T16:04:22+00:00"
+>>>>>>> 0709c6068aafe3c490d4ecbd9c1afb5a0e297fb6
         },
         {
             "name": "doctrine/lexer",
@@ -369,6 +532,159 @@
             "time": "2017-06-03T02:28:16+00:00"
         },
         {
+            "name": "fortawesome/font-awesome",
+            "version": "v4.7.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/FortAwesome/Font-Awesome.git",
+                "reference": "a8386aae19e200ddb0f6845b5feeee5eb7013687"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/FortAwesome/Font-Awesome/zipball/a8386aae19e200ddb0f6845b5feeee5eb7013687",
+                "reference": "a8386aae19e200ddb0f6845b5feeee5eb7013687",
+                "shasum": ""
+            },
+            "require-dev": {
+                "jekyll": "1.0.2",
+                "lessc": "1.4.2"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "4.6.x-dev"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "OFL-1.1",
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Dave Gandy",
+                    "email": "dave@fontawesome.io",
+                    "homepage": "http://twitter.com/davegandy",
+                    "role": "Developer"
+                }
+            ],
+            "description": "The iconic font and CSS framework",
+            "homepage": "http://fontawesome.io/",
+            "keywords": [
+                "FontAwesome",
+                "awesome",
+                "bootstrap",
+                "font",
+                "icon"
+            ],
+            "time": "2016-10-24T15:52:54+00:00"
+        },
+        {
+            "name": "kartik-v/yii2-dialog",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/kartik-v/yii2-dialog.git",
+                "reference": "cd80ac5bf7c3f43d0452b1b3ff1559f3db053674"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/kartik-v/yii2-dialog/zipball/cd80ac5bf7c3f43d0452b1b3ff1559f3db053674",
+                "reference": "cd80ac5bf7c3f43d0452b1b3ff1559f3db053674",
+                "shasum": ""
+            },
+            "require": {
+                "bower-asset/bootstrap3-dialog": "~1.34",
+                "kartik-v/yii2-krajee-base": "~1.7"
+            },
+            "type": "yii2-extension",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "kartik\\dialog\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Kartik Visweswaran",
+                    "email": "kartikv2@gmail.com",
+                    "homepage": "http://www.krajee.com/"
+                }
+            ],
+            "description": "An asset bundle for bootstrap3-dialog for Yii 2.0 framework.",
+            "homepage": "https://github.com/kartik-v/yii2-dialog",
+            "keywords": [
+                "alert",
+                "bootstrap",
+                "dialog",
+                "extension",
+                "modal",
+                "yii2"
+            ],
+            "time": "2017-10-20T11:01:19+00:00"
+        },
+        {
+            "name": "kartik-v/yii2-grid",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/kartik-v/yii2-grid.git",
+                "reference": "395012ebf0606c28b08ea5d8e141716e1b5b210f"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/kartik-v/yii2-grid/zipball/395012ebf0606c28b08ea5d8e141716e1b5b210f",
+                "reference": "395012ebf0606c28b08ea5d8e141716e1b5b210f",
+                "shasum": ""
+            },
+            "require": {
+                "kartik-v/yii2-dialog": "~1.0",
+                "kartik-v/yii2-krajee-base": "~1.7"
+            },
+            "suggest": {
+                "kartik-v/yii2-mpdf": "For exporting grids to PDF"
+            },
+            "type": "yii2-extension",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "3.1.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "kartik\\grid\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Kartik Visweswaran",
+                    "email": "kartikv2@gmail.com",
+                    "homepage": "http://www.krajee.com/"
+                }
+            ],
+            "description": "Yii 2 GridView on steroids. Various enhancements and utilities for the Yii 2.0 GridView widget.",
+            "homepage": "https://github.com/kartik-v/yii2-grid",
+            "keywords": [
+                "extension",
+                "grid",
+                "widget",
+                "yii2"
+            ],
+            "time": "2017-11-02T12:18:34+00:00"
+        },
+        {
             "name": "kartik-v/yii2-krajee-base",
             "version": "dev-master",
             "source": {
@@ -474,6 +790,58 @@
             "time": "2017-09-06T06:18:08+00:00"
         },
         {
+            "name": "rmrevin/yii2-fontawesome",
+            "version": "2.17.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/rmrevin/yii2-fontawesome.git",
+                "reference": "65ce306da864f4d558348aeba040ed7876878090"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/rmrevin/yii2-fontawesome/zipball/65ce306da864f4d558348aeba040ed7876878090",
+                "reference": "65ce306da864f4d558348aeba040ed7876878090",
+                "shasum": ""
+            },
+            "require": {
+                "fortawesome/font-awesome": "~4.7",
+                "php": ">=5.4.0",
+                "yiisoft/yii2": "2.0.*"
+            },
+            "type": "yii2-extension",
+            "extra": {
+                "asset-installer-paths": {
+                    "npm-asset-library": "vendor/npm",
+                    "bower-asset-library": "vendor/bower"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "rmrevin\\yii\\fontawesome\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Revin Roman",
+                    "email": "roman@rmrevin.com",
+                    "homepage": "https://rmrevin.com/"
+                }
+            ],
+            "description": "Asset Bundle for Yii2 with Font Awesome",
+            "keywords": [
+                "asset",
+                "awesome",
+                "bundle",
+                "font",
+                "yii"
+            ],
+            "time": "2017-01-11T14:05:47+00:00"
+        },
+        {
             "name": "swiftmailer/swiftmailer",
             "version": "dev-master",
             "source": {
@@ -534,12 +902,21 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/yiisoft/yii2-framework.git",
+<<<<<<< HEAD
+                "reference": "5f3aee0d403549b6e94308e6cb3f828434e77072"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/yiisoft/yii2-framework/zipball/5f3aee0d403549b6e94308e6cb3f828434e77072",
+                "reference": "5f3aee0d403549b6e94308e6cb3f828434e77072",
+=======
                 "reference": "6908325e181c31c055b6fcad27ea264dbe77dfbe"
             },
             "dist": {
                 "type": "zip",
                 "url": "https://api.github.com/repos/yiisoft/yii2-framework/zipball/6908325e181c31c055b6fcad27ea264dbe77dfbe",
                 "reference": "6908325e181c31c055b6fcad27ea264dbe77dfbe",
+>>>>>>> 0709c6068aafe3c490d4ecbd9c1afb5a0e297fb6
                 "shasum": ""
             },
             "require": {
@@ -626,7 +1003,11 @@
                 "framework",
                 "yii2"
             ],
+<<<<<<< HEAD
+            "time": "2017-11-01T20:47:13+00:00"
+=======
             "time": "2017-11-05T09:22:22+00:00"
+>>>>>>> 0709c6068aafe3c490d4ecbd9c1afb5a0e297fb6
         },
         {
             "name": "yiisoft/yii2-bootstrap",
@@ -840,7 +1221,7 @@
             "version": "v0.11.1",
             "source": {
                 "type": "git",
-                "url": "https://github.com/twitter/typeahead.js.git",
+                "url": "git@github.com:twitter/typeahead.js.git",
                 "reference": "588440f66559714280628a4f9799f0c4eb880a4a"
             },
             "dist": {
@@ -1882,12 +2263,21 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/phpunit-mock-objects.git",
+<<<<<<< HEAD
+                "reference": "fb77027d3cdb1a1bff05b4b805d3c01f089e0152"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/sebastianbergmann/phpunit-mock-objects/zipball/fb77027d3cdb1a1bff05b4b805d3c01f089e0152",
+                "reference": "fb77027d3cdb1a1bff05b4b805d3c01f089e0152",
+=======
                 "reference": "a9a136bf77a096c9b396cc81db555db8acabb753"
             },
             "dist": {
                 "type": "zip",
                 "url": "https://api.github.com/repos/sebastianbergmann/phpunit-mock-objects/zipball/a9a136bf77a096c9b396cc81db555db8acabb753",
                 "reference": "a9a136bf77a096c9b396cc81db555db8acabb753",
+>>>>>>> 0709c6068aafe3c490d4ecbd9c1afb5a0e297fb6
                 "shasum": ""
             },
             "require": {
@@ -1933,7 +2323,11 @@
                 "mock",
                 "xunit"
             ],
+<<<<<<< HEAD
+            "time": "2017-11-02T14:48:53+00:00"
+=======
             "time": "2017-11-04T09:37:34+00:00"
+>>>>>>> 0709c6068aafe3c490d4ecbd9c1afb5a0e297fb6
         },
         {
             "name": "psr/http-message",
@@ -2083,12 +2477,21 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/comparator.git",
+<<<<<<< HEAD
+                "reference": "f805963ee2e7d38a474d6ebc8961b1854eed210a"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/sebastianbergmann/comparator/zipball/f805963ee2e7d38a474d6ebc8961b1854eed210a",
+                "reference": "f805963ee2e7d38a474d6ebc8961b1854eed210a",
+=======
                 "reference": "1174d9018191e93cb9d719edec01257fc05f8158"
             },
             "dist": {
                 "type": "zip",
                 "url": "https://api.github.com/repos/sebastianbergmann/comparator/zipball/1174d9018191e93cb9d719edec01257fc05f8158",
                 "reference": "1174d9018191e93cb9d719edec01257fc05f8158",
+>>>>>>> 0709c6068aafe3c490d4ecbd9c1afb5a0e297fb6
                 "shasum": ""
             },
             "require": {
@@ -2139,7 +2542,11 @@
                 "compare",
                 "equality"
             ],
+<<<<<<< HEAD
+            "time": "2017-11-01T08:33:06+00:00"
+=======
             "time": "2017-11-03T07:16:52+00:00"
+>>>>>>> 0709c6068aafe3c490d4ecbd9c1afb5a0e297fb6
         },
         {
             "name": "sebastian/diff",
@@ -2699,12 +3106,21 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/console.git",
+<<<<<<< HEAD
+                "reference": "8e5f4d2b26b0a158bd7c83ffc780ffcd08fd3bb3"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/console/zipball/8e5f4d2b26b0a158bd7c83ffc780ffcd08fd3bb3",
+                "reference": "8e5f4d2b26b0a158bd7c83ffc780ffcd08fd3bb3",
+=======
                 "reference": "379744aa3f7ccc56d0b767d0a27edc44b3bef8d9"
             },
             "dist": {
                 "type": "zip",
                 "url": "https://api.github.com/repos/symfony/console/zipball/379744aa3f7ccc56d0b767d0a27edc44b3bef8d9",
                 "reference": "379744aa3f7ccc56d0b767d0a27edc44b3bef8d9",
+>>>>>>> 0709c6068aafe3c490d4ecbd9c1afb5a0e297fb6
                 "shasum": ""
             },
             "require": {
@@ -2760,7 +3176,11 @@
             ],
             "description": "Symfony Console Component",
             "homepage": "https://symfony.com",
+<<<<<<< HEAD
+            "time": "2017-10-24T14:40:29+00:00"
+=======
             "time": "2017-11-05T16:10:10+00:00"
+>>>>>>> 0709c6068aafe3c490d4ecbd9c1afb5a0e297fb6
         },
         {
             "name": "symfony/css-selector",
@@ -2768,12 +3188,21 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/css-selector.git",
+<<<<<<< HEAD
+                "reference": "6bbad1ad4cd69dd440b24a62979cc469c5800490"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/css-selector/zipball/6bbad1ad4cd69dd440b24a62979cc469c5800490",
+                "reference": "6bbad1ad4cd69dd440b24a62979cc469c5800490",
+=======
                 "reference": "7134b93e90ea7e7881fcb2da006d21b4c5f31908"
             },
             "dist": {
                 "type": "zip",
                 "url": "https://api.github.com/repos/symfony/css-selector/zipball/7134b93e90ea7e7881fcb2da006d21b4c5f31908",
                 "reference": "7134b93e90ea7e7881fcb2da006d21b4c5f31908",
+>>>>>>> 0709c6068aafe3c490d4ecbd9c1afb5a0e297fb6
                 "shasum": ""
             },
             "require": {
@@ -2813,7 +3242,11 @@
             ],
             "description": "Symfony CssSelector Component",
             "homepage": "https://symfony.com",
+<<<<<<< HEAD
+            "time": "2017-10-24T14:12:06+00:00"
+=======
             "time": "2017-11-05T16:10:10+00:00"
+>>>>>>> 0709c6068aafe3c490d4ecbd9c1afb5a0e297fb6
         },
         {
             "name": "symfony/debug",
@@ -2877,12 +3310,21 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/dom-crawler.git",
+<<<<<<< HEAD
+                "reference": "8cc827ee34b27767110c6ba2f2efa899e8aa3be5"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/dom-crawler/zipball/8cc827ee34b27767110c6ba2f2efa899e8aa3be5",
+                "reference": "8cc827ee34b27767110c6ba2f2efa899e8aa3be5",
+=======
                 "reference": "7bf68716e400997a291ad42c9f9fe7972e6656d2"
             },
             "dist": {
                 "type": "zip",
                 "url": "https://api.github.com/repos/symfony/dom-crawler/zipball/7bf68716e400997a291ad42c9f9fe7972e6656d2",
                 "reference": "7bf68716e400997a291ad42c9f9fe7972e6656d2",
+>>>>>>> 0709c6068aafe3c490d4ecbd9c1afb5a0e297fb6
                 "shasum": ""
             },
             "require": {
@@ -2925,7 +3367,11 @@
             ],
             "description": "Symfony DomCrawler Component",
             "homepage": "https://symfony.com",
+<<<<<<< HEAD
+            "time": "2017-10-28T16:49:05+00:00"
+=======
             "time": "2017-11-05T16:10:10+00:00"
+>>>>>>> 0709c6068aafe3c490d4ecbd9c1afb5a0e297fb6
         },
         {
             "name": "symfony/event-dispatcher",
@@ -2933,12 +3379,21 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/event-dispatcher.git",
+<<<<<<< HEAD
+                "reference": "494b359278b7f3a88527f40deda3227df301330a"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/event-dispatcher/zipball/494b359278b7f3a88527f40deda3227df301330a",
+                "reference": "494b359278b7f3a88527f40deda3227df301330a",
+=======
                 "reference": "10d9a1b5dbf23dfaa38737b69a09f8882821f666"
             },
             "dist": {
                 "type": "zip",
                 "url": "https://api.github.com/repos/symfony/event-dispatcher/zipball/10d9a1b5dbf23dfaa38737b69a09f8882821f666",
                 "reference": "10d9a1b5dbf23dfaa38737b69a09f8882821f666",
+>>>>>>> 0709c6068aafe3c490d4ecbd9c1afb5a0e297fb6
                 "shasum": ""
             },
             "require": {
@@ -2988,7 +3443,11 @@
             ],
             "description": "Symfony EventDispatcher Component",
             "homepage": "https://symfony.com",
+<<<<<<< HEAD
+            "time": "2017-10-24T14:12:06+00:00"
+=======
             "time": "2017-11-05T16:10:10+00:00"
+>>>>>>> 0709c6068aafe3c490d4ecbd9c1afb5a0e297fb6
         },
         {
             "name": "symfony/finder",
@@ -2996,12 +3455,21 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/finder.git",
+<<<<<<< HEAD
+                "reference": "29422c4e871dd668ecac0e8075cf64dccdabff46"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/finder/zipball/29422c4e871dd668ecac0e8075cf64dccdabff46",
+                "reference": "29422c4e871dd668ecac0e8075cf64dccdabff46",
+=======
                 "reference": "dac8d7db537bac7ad8143eb11360a8c2231f251a"
             },
             "dist": {
                 "type": "zip",
                 "url": "https://api.github.com/repos/symfony/finder/zipball/dac8d7db537bac7ad8143eb11360a8c2231f251a",
                 "reference": "dac8d7db537bac7ad8143eb11360a8c2231f251a",
+>>>>>>> 0709c6068aafe3c490d4ecbd9c1afb5a0e297fb6
                 "shasum": ""
             },
             "require": {
@@ -3037,7 +3505,11 @@
             ],
             "description": "Symfony Finder Component",
             "homepage": "https://symfony.com",
+<<<<<<< HEAD
+            "time": "2017-10-24T14:12:06+00:00"
+=======
             "time": "2017-11-05T16:10:10+00:00"
+>>>>>>> 0709c6068aafe3c490d4ecbd9c1afb5a0e297fb6
         },
         {
             "name": "symfony/polyfill-mbstring",
@@ -3398,7 +3870,12 @@
     "minimum-stability": "dev",
     "stability-flags": {
         "kartik-v/yii2-widget-datepicker": 20,
+<<<<<<< HEAD
+        "kartik-v/yii2-grid": 20,
+        "kartik-v/yii2-krajee-base": 20
+=======
         "chrisb34/yii2-report-grid": 20
+>>>>>>> 0709c6068aafe3c490d4ecbd9c1afb5a0e297fb6
     },
     "prefer-stable": false,
     "prefer-lowest": false,
