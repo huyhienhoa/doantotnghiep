@@ -57,6 +57,7 @@ class User extends ActiveRecord implements IdentityInterface
         return [
             [['username','password_hash','email'], 'required', 'message' => 'Chưa điền {attribute}'],
             [['password_reset_token', 'auth_key', 'status', 'created_at', 'updated_at', 'role'], 'safe'],
+            [['active'], 'integer'],
             ['status', 'default', 'value' => self::STATUS_ACTIVE],
             ['status', 'in', 'range' => [self::STATUS_ACTIVE, self::STATUS_DELETED]],
         ];
