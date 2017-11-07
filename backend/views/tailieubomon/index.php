@@ -7,7 +7,6 @@ use yii\widgets\Pjax;
 /* @var $searchModel common\models\searchs\TailieubomonSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'TÀI LIỆU BỘ MÔN';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="tailieubomon-index">
@@ -20,10 +19,15 @@ $this->params['breadcrumbs'][] = $this->title;
         <?= $btn_them; ?>
     </p>
 
-    <?= GridView::widget([
+    <?= kartik\grid\GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
         'summary'=>'Trang {page}/{pageCount}. Số lượng bản ghi: {totalCount}',
+        'panel' => [
+            'heading' => '<h3 class="panel-title">Tài liệu bộ môn</h3>',
+            'type' => 'primary',
+            'showFooter' => false
+        ],
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 

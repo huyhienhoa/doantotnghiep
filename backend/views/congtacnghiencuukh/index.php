@@ -12,7 +12,6 @@ $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="congtacnghiencuukh-index">
 
-    <h1><?= Html::encode($this->title) ?></h1>
     <?php Pjax::begin(); ?>
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
@@ -20,10 +19,17 @@ $this->params['breadcrumbs'][] = $this->title;
         <?= $btn_them; ?>
     </p>
 
-    <?= GridView::widget([
+    <?= kartik\grid\GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
         'summary'=>'Trang {page}/{pageCount}. Số lượng bản ghi: {totalCount}',
+        'responsive' => true,
+        'hover' => true,
+        'panel' => [
+            'heading' => '<h3 class="panel-title">Công tác nghiên cứu khoa học</h3>',
+            'type' => 'primary',
+            'showFooter' => false
+        ],
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 

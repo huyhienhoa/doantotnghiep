@@ -8,10 +8,22 @@ $params = array_merge(
 
 return [
     'id' => 'app-backend',
+    'name' => 'Quản lý tài liệu',
     'basePath' => dirname(__DIR__),
     'controllerNamespace' => 'backend\controllers',
     'bootstrap' => ['log'],
-    'modules' => [],
+    'modules' => [
+        'gridview' =>  [
+            'class' => '\kartik\grid\Module'
+        ],
+        'db-manager' => [
+            'class' => 'bs\dbManager\Module',
+            // path to directory for the dumps
+            'path' => '@quanlytailieu/backups',
+            // list of registerd db-components
+            'dbList' => ['doantotnghiep'],
+        ],
+    ],
     'components' => [
         'request' => [
             'csrfParam' => '_csrf-backend',
