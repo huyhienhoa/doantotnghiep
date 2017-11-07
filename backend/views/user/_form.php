@@ -27,12 +27,20 @@ use yii\widgets\ActiveForm;
             </div>
 
             <div class="col-md-3">
-                <?= $form->field($model, 'role')->dropDownList([
-                    'admin' => 'admin',
-                    'trưởng khoa' => 'Trưởng khoa',
-                    'trưởng bộ môn' => 'Trưởng bộ môn',
-                    'giảng viên' => 'Giảng viên'
-                ]) ?>
+                <?php
+                    if (in_array(Yii::$app->user->identity->role, ['admin'])){
+                        echo $form->field($model, 'role')->dropDownList([
+                            'admin' => 'admin',
+                            'trưởng khoa' => 'Trưởng khoa',
+                        ]);
+                    }
+                    else{
+                        echo $form->field($model, 'role')->dropDownList([
+                            'trưởng bộ môn' => 'Trưởng bộ môn',
+                            'giảng viên' => 'Giảng viên',
+                        ]);
+                    }
+                ?>
             </div>
         </div>
 

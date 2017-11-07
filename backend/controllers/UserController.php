@@ -61,7 +61,13 @@ class UserController extends Controller
     {
         $searchModel = new UserSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
-
+        if (in_array(Yii::$app->user->identity->role, ['admin']))
+            {
+            $dataProvider->query->andWhere(['active'=>'0']);
+            }
+        else{
+            $dataProvider->query->andWhere(['active'=>'1']);
+        }
         return $this->render('index', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
@@ -88,7 +94,11 @@ class UserController extends Controller
     public function actionCreate()
     {
         $model = new User();
-
+        if (in_array(Yii::$app->user->identity->role, ['trưởng khoa']))
+            {
+                $model->active = '1';
+                $model->save();
+            }
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
         }
@@ -96,6 +106,7 @@ class UserController extends Controller
         return $this->render('create', [
             'model' => $model,
         ]);
+
     }
 
     /**
