@@ -41,7 +41,7 @@ class CongtacnghiencuukhSearch extends Congtacnghiencuukh
      */
     public function search($params)
     {
-        $query = Congtacnghiencuukh::find();
+        $query = (is_null(Yii::$app->user->identity->khoa_id))?Congtacnghiencuukh::find():Congtacnghiencuukh::find()->where(['khoa_id'=>Yii::$app->user->identity->khoa_id]);
 
         // add conditions that should always apply here
 

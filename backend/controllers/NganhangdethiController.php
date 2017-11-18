@@ -20,43 +20,19 @@ class NganhangdethiController extends Controller
     /**
      * @inheritdoc
      */
-    public function behaviors()
+     public function behaviors()
     {
         return [
-            'access' => [
+             'access' => [
                 'class' => AccessControl::className(),
                 'rules' => [
                     [
-                        'actions' => ['login', 'error'],
-                        'allow' => true,
-                    ],
-                    [
-                        'actions' => ['logout', 'download', 'view'],
-                        'allow' => true,
+                        'actions' => Yii::$app->user->identity->getDanhsachquyen(Yii::$app->controller->id),
+                        'allow' => (!empty(Yii::$app->user->identity->getDanhsachquyen(Yii::$app->controller->id)))?true:false,
                         'roles' => ['@'],
-                    ],
-
-                    [
-                        'actions' => ['create', 'update', 'delete'],
-                        'allow' => true,
-                        'matchCallback' => function($rule, $action){
-                            if (in_array(Yii::$app->user->identity->role, ['trưởng bộ môn']))
-                                return true;
-                            return false;
-                        }
-                    ],
-                    [
-                        'actions' => ['index'],
-                        'allow' => true,
-                        'matchCallback' => function($rule, $action){
-                            if (in_array(Yii::$app->user->identity->role, ['trưởng bộ môn', 'trưởng khoa']))
-                                return true;
-                            return false;
-                        }
                     ],
                 ],
             ],
-
             'verbs' => [
                 'class' => VerbFilter::className(),
                 'actions' => [
@@ -74,7 +50,7 @@ class NganhangdethiController extends Controller
     {
         $searchModel = new NganhangdethiSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
-        if (in_array(Yii::$app->user->identity->role, ['admin', 'trưởng bộ môn']))
+        if (in_array(Yii::$app->user->identity->role, [!empty(Yii::$app->user->identity->getDanhsachquyen(Yii::$app->controller->id))]))
             $btn_them =  Html::a('<span class="glyphicon glyphicon-plus"></span> Thêm mới', ['create'], ['class' => 'btn btn-success']);
         else
             $btn_them = '';

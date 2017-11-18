@@ -11,10 +11,12 @@ use Yii;
  * @property string $makhoa
  * @property string $tenkhoa
  *
+ * @property AuthItem[] $authItems
  * @property Bomon[] $bomons
  * @property Chuongtrinhdaotao[] $chuongtrinhdaotaos
  * @property Chuyennganh[] $chuyennganhs
  * @property Congtacnghiencuukh[] $congtacnghiencuukhs
+ * @property User[] $users
  */
 class Khoa extends \yii\db\ActiveRecord
 {
@@ -32,7 +34,7 @@ class Khoa extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['makhoa', 'tenkhoa'], 'required', 'message' => 'Chưa điền {attribute}'],
+            [['makhoa', 'tenkhoa'], 'required'],
             [['makhoa'], 'string', 'max' => 10],
             [['tenkhoa'], 'string', 'max' => 200],
             [['makhoa'], 'unique'],
@@ -46,10 +48,18 @@ class Khoa extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'id' => 'ID',
-            'makhoa' => 'Mã khoa',
-            'tenkhoa' => 'Tên khoa',
+            'id' => Yii::t('app', 'ID'),
+            'makhoa' => Yii::t('app', 'Makhoa'),
+            'tenkhoa' => Yii::t('app', 'Tenkhoa'),
         ];
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getAuthItems()
+    {
+        return $this->hasMany(AuthItem::className(), ['khoa_id' => 'id']);
     }
 
     /**
@@ -82,5 +92,13 @@ class Khoa extends \yii\db\ActiveRecord
     public function getCongtacnghiencuukhs()
     {
         return $this->hasMany(Congtacnghiencuukh::className(), ['khoa_id' => 'id']);
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getUsers()
+    {
+        return $this->hasMany(User::className(), ['khoa_id' => 'id']);
     }
 }

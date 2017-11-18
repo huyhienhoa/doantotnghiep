@@ -22,31 +22,16 @@ class MonhocController extends Controller
     public function behaviors()
     {
         return [
-            'access' => [
+             'access' => [
                 'class' => AccessControl::className(),
                 'rules' => [
                     [
-                        'actions' => ['login', 'error'],
-                        'allow' => true,
-                    ],
-                    [
-                        'actions' => ['logout', 'download', 'view'],
-                        'allow' => true,
+                        'actions' => Yii::$app->user->identity->getDanhsachquyen(Yii::$app->controller->id),
+                        'allow' => (!empty(Yii::$app->user->identity->getDanhsachquyen(Yii::$app->controller->id)))?true:false,
                         'roles' => ['@'],
-                    ],
-
-                    [
-                        'actions' => ['create', 'update', 'delete', 'index'],
-                        'allow' => true,
-                        'matchCallback' => function($rule, $action){
-                            if (in_array(Yii::$app->user->identity->role, ['trưởng khoa']))
-                                return true;
-                            return false;
-                        }
                     ],
                 ],
             ],
-
             'verbs' => [
                 'class' => VerbFilter::className(),
                 'actions' => [
@@ -64,7 +49,7 @@ class MonhocController extends Controller
     {
         $searchModel = new MonhocSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
-        if (in_array(Yii::$app->user->identity->role, ['trưởng khoa']))
+        if (in_array(Yii::$app->user->identity->role, [!empty(Yii::$app->user->identity->getDanhsachquyen(Yii::$app->controller->id))]))
             $btn_them =  Html::a('<span class="glyphicon glyphicon-plus"></span> Thêm mới', ['create'], ['class' => 'btn btn-success']);
         else
             $btn_them = '';

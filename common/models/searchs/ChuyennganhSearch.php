@@ -41,7 +41,7 @@ class ChuyennganhSearch extends Chuyennganh
      */
     public function search($params)
     {
-        $query = Chuyennganh::find();
+        $query = (is_null(Yii::$app->user->identity->khoa_id))?Chuyennganh::find():Chuyennganh::find()->where(['khoa_id'=>Yii::$app->user->identity->khoa_id]);
 
         // add conditions that should always apply here
 

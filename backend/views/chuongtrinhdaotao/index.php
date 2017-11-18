@@ -25,6 +25,11 @@ $this->params['breadcrumbs'][] = $this->title;
         'summary'=>'Trang {page}/{pageCount}. Số lượng bản ghi: {totalCount}',
         'responsive' => true,
         'hover' => true,
+        'toolbar'=> [
+                ['content'=>
+                    '{export}'
+                ],
+            ],          
         'panel' => [
             'heading' => '<h3 class="panel-title"> Chương trình đào tạo</h3>',
             'type' => 'primary',
@@ -58,25 +63,26 @@ $this->params['breadcrumbs'][] = $this->title;
                 'class' => 'yii\grid\ActionColumn',
                 'template' => '<p class="text-center">{download}</p>',
                 'header' => '<p class="text-center">Tải về</p>',
-//                'visible' => false
+                'visible' => in_array(Yii::$app->user->identity->role, [!empty(Yii::$app->user->identity->getDanhsachquyen(Yii::$app->controller->id))])
             ],
             [
                 'class' => 'yii\grid\ActionColumn',
                 'template' => '<p class="text-center">{view}</p>',
                 'header' => '<p class="text-center">Xem</p>',
-//                'visible' => false
+                'visible' => in_array(Yii::$app->user->identity->role, [!empty(Yii::$app->user->identity->getDanhsachquyen(Yii::$app->controller->id))])
             ],
             [
                 'class' => 'yii\grid\ActionColumn',
                 'template' => '<p class="text-center">{update}</p>',
                 'header' => '<p class="text-center">Sửa</p>',
-                'visible' => in_array(Yii::$app->user->identity->role, ['admin', 'trưởng bộ môn'])
+                'visible' => in_array(Yii::$app->user->identity->role, [!empty(Yii::$app->user->identity->getDanhsachquyen(Yii::$app->controller->id))])
             ],
             [
                 'class' => 'yii\grid\ActionColumn',
                 'template' => '<p class="text-center">{delete}</p>',
                 'header' => '<p class="text-center">Xóa</p>',
-                'visible' => in_array(Yii::$app->user->identity->role, ['admin', 'trưởng bộ môn'])
+                'visible' => in_array(Yii::$app->user->identity->role, [!empty(Yii::$app->user->identity->getDanhsachquyen(Yii::$app->controller->id))])
+                
             ],
 //            ['class' => 'yii\grid\ActionColumn'],
         ],

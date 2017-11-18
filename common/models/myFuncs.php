@@ -26,6 +26,12 @@ class myFuncs
         return "{$arr[2]}/{$arr[1]}/{$arr[0]}";
     }
 
+    public static function getLoaithidua($str){
+        if($str==0)
+            return 'Tập thể';
+        return 'Cá nhân';
+    }
+
     public static function getThuchanh($str){
         if($str=='co')
             return 'Có';
@@ -79,5 +85,31 @@ class myFuncs
         $str = strtolower($str);
         return str_replace(" ", '-', $str);;
     }
+
+    public static function tachNam($date){
+        $ngay = explode('/', $date);
+        $day = array_pop($ngay);
+        return $day;
+
+    }
+
+    public static function tachThang($date){
+        $ngay = explode('/', $date);
+        $day = array_pop($ngay);
+        $month = array_pop($ngay);
+        return $month;
+
+    }
+
+    public static function tachNgay($date){
+        $ngay = explode('/', $date);
+        $day = array_pop($ngay);
+        $month = array_pop($ngay);
+        $nam = array_pop($ngay);
+        return $nam;
+
+    }
+
+
 
 }

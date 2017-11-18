@@ -12,37 +12,24 @@ use yii\widgets\ActiveForm;
     <div class="user-form">
 
         <?php $form = ActiveForm::begin(); ?>
+                <?php if ($model->isNewRecord): ?>
+                    <?= $form->field($model, 'username') ?>
+                <?php endif; ?>
 
-        <div class="row">
-            <div class="col-md-3">
-                <?= $form->field($model, 'username') ?>
-            </div>
-
-            <div class="col-md-3">
                 <?= $form->field($model, 'email') ?>
-            </div>
-
-            <div class="col-md-3">
-                <?= $form->field($model, 'password_hash')->textInput(['type' => 'password']) ?>
-            </div>
-
-            <div class="col-md-3">
-                <?php
-                    if (in_array(Yii::$app->user->identity->role, ['admin'])){
-                        echo $form->field($model, 'role')->dropDownList([
-                            'admin' => 'admin',
-                            'trưởng khoa' => 'Trưởng khoa',
-                        ]);
-                    }
-                    else{
-                        echo $form->field($model, 'role')->dropDownList([
-                            'trưởng bộ môn' => 'Trưởng bộ môn',
-                            'giảng viên' => 'Giảng viên',
-                        ]);
-                    }
-                ?>
-            </div>
-        </div>
+                
+                <?php if ($model->isNewRecord): ?>
+                    <?= $form->field($model, 'password_hash')->textInput(['type' => 'password']) ?>
+                <?php endif; ?>
+               
+               <?= $form->field($model, 'roles_id')->dropDownList(
+                        \yii\helpers\ArrayHelper::map(\common\models\Roles::find()->where(['<>','name','Administrator'])->all(),'id','name'),['prompt'=>'Chọn vai trò']
+                    ) ?>
+                <?php if (Yii::$app->user->identity->role == 'admin'): ?>
+                    <?= $form->field($model, 'khoa_id')->dropDownList(
+                        \yii\helpers\ArrayHelper::map(\common\models\Khoa::find()->all(),'id','tenkhoa')
+                    ) ?>
+                <?php endif; ?>
 
         <div class="form-group">
             <?= Html::submitButton('<span class="glyphicon glyphicon-floppy-save"></span> Lưu lại', ['class' => 'btn btn-success']) ?>

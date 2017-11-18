@@ -11,7 +11,7 @@ $this->title = 'Quản lý tài liệu';
         <div class="col-md-10 col-md-offset-1 text-center">
             <br><br><br>
             <div>
-                <img src="logovimaru.png" width="200px">
+                <img src="logovimaru.png" width="200px" class="logo-spin">
             </div>
             <div>
                 <br><br>

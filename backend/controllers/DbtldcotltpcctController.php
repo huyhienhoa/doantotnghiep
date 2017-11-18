@@ -17,9 +17,19 @@ class DbtldcotltpcctController extends Controller
     /**
      * @inheritdoc
      */
-    public function behaviors()
+     public function behaviors()
     {
         return [
+             'access' => [
+                'class' => AccessControl::className(),
+                'rules' => [
+                    [
+                        'actions' => Yii::$app->user->identity->getDanhsachquyen(Yii::$app->controller->id),
+                        'allow' => (!empty(Yii::$app->user->identity->getDanhsachquyen(Yii::$app->controller->id)))?true:false,
+                        'roles' => ['@'],
+                    ],
+                ],
+            ],
             'verbs' => [
                 'class' => VerbFilter::className(),
                 'actions' => [

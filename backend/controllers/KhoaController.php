@@ -26,24 +26,9 @@ class KhoaController extends Controller
                 'access' => [
                     'class' => AccessControl::className(),
                     'rules' => [
-                        [
-                            'actions' => ['view' ],
-                            'allow' => true,
-                            'roles' => ['@']
-                        ],
-                        [
-                            'actions' => ['create', 'update', 'delete', 'index'],
-                            'allow' => true,
-                            'matchCallback' => function($rule, $action){
-                                $userLogged = Yii::$app->user->identity;
-                                if (in_array($userLogged->role, ['admin']))
-                                    return true;
-                                return false;
-                            }
-                        ],
-                        [
-                            'actions' => ['logout'],
-                            'allow' => true,
+                         [
+                            'actions' => Yii::$app->user->identity->getDanhsachquyen(Yii::$app->controller->id),
+                            'allow' => (!empty(Yii::$app->user->identity->getDanhsachquyen(Yii::$app->controller->id)))?true:false,
                             'roles' => ['@'],
                         ],
                     ],
@@ -66,7 +51,7 @@ class KhoaController extends Controller
     {
         $searchModel = new KhoaSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
-        if (in_array(Yii::$app->user->identity->role, ['admin']))
+        if (in_array(Yii::$app->user->identity->role, [!empty(Yii::$app->user->identity->getDanhsachquyen(Yii::$app->controller->id))]))
             $btn_them =  Html::a('<span class="glyphicon glyphicon-plus"></span> Thêm mới', ['create'], ['class' => 'btn btn-success']);
         else
             $btn_them = '';

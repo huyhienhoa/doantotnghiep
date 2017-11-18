@@ -22,25 +22,20 @@ class UserController extends Controller
     public function behaviors()
     {
         return [
-                    'access' => [
+                'access' => [
                 'class' => AccessControl::className(),
                 'rules' => [
                     [
-                        'actions' => ['login', 'error', 'changePassword'],
+                        'actions' => ['logout'],
+                        'roles' => ['@'],
                         'allow' => true,
                     ],
                     [
-                        'actions' => ['logout', 'index', 'view', 'update', 'delete', 'create'],
-                        'allow' => true,
-//                        'roles' => ['@'],
-                        'matchCallback' => function($rule, $action){
-//                            Yii::$app->user->identity;
-                            $userLogged = Yii::$app->user->identity;
-                            if (in_array($userLogged->role, ['admin', 'trưởng khoa']))
-                                return true;
-                            return false;
-                        }
+                        'actions' => Yii::$app->user->identity->getDanhsachquyen(Yii::$app->controller->id),
+                        'roles' => ['@'],
+                        'allow' => (!empty(Yii::$app->user->identity->getDanhsachquyen(Yii::$app->controller->id)))?true:false,
                     ],
+                    
                 ],
             ],
 
@@ -61,13 +56,7 @@ class UserController extends Controller
     {
         $searchModel = new UserSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
-        if (in_array(Yii::$app->user->identity->role, ['admin']))
-            {
-            $dataProvider->query->andWhere(['active'=>'0']);
-            }
-        else{
-            $dataProvider->query->andWhere(['active'=>'1']);
-        }
+      
         return $this->render('index', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
@@ -94,16 +83,31 @@ class UserController extends Controller
     public function actionCreate()
     {
         $model = new User();
-        if (in_array(Yii::$app->user->identity->role, ['trưởng khoa']))
-            {
-                $model->active = '1';
-                $model->save();
-            }
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
         }
 
         return $this->render('create', [
+            'model' => $model,
+        ]);
+
+    }
+
+    public function actionCreateadmin()
+    {
+        $model = new User();
+        $model->role = 'admin';
+        $model->roles_id = 1;
+        $model->khoa_id = NULL;
+        if ($model->load(Yii::$app->request->post()) && $model->validate()) {
+           
+            if ($model->save())
+                return $this->redirect(['view', 'id' => $model->id]);
+            else
+                var_dump($model->getErrors());die;
+        }
+
+        return $this->render('createadmin', [
             'model' => $model,
         ]);
 
@@ -115,18 +119,22 @@ class UserController extends Controller
      * @param integer $id
      * @return mixed
      */
-//    public function actionUpdate($id)
-//    {
-//        $model = $this->findModel($id);
-//
-//        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-//            return $this->redirect(['view', 'id' => $model->id]);
-//        }
-//
-//        return $this->render('update', [
-//            'model' => $model,
-//        ]);
-//    }
+   public function actionUpdate($id)
+   {
+       $model = $this->findModel($id);
+       if ($model->load(Yii::$app->request->post()) && $model->validate()) {
+            if ($model->save())
+                return $this->redirect(['view', 'id' => $model->id]);
+       }
+       if ($model->role != 'admin')
+            return $this->render('update', [
+               'model' => $model,
+           ]);
+        else
+           return $this->render('updateadmin', [
+               'model' => $model,
+           ]); 
+   }
     public function actionChangePassword()
     {
         $model = new ChangePasswordForm;

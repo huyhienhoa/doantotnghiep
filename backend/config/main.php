@@ -11,6 +11,7 @@ return [
     'name' => 'Quản lý tài liệu',
     'basePath' => dirname(__DIR__),
     'controllerNamespace' => 'backend\controllers',
+    'language'=>'vi',
     'bootstrap' => ['log'],
     'modules' => [
         'gridview' =>  [

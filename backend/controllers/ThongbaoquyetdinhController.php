@@ -26,24 +26,9 @@ class ThongbaoquyetdinhController extends Controller
             'access' => [
                 'class' => AccessControl::className(),
                 'rules' => [
-                    [
-                        'actions' => ['login', 'error'],
-                        'allow' => true,
-                    ],
-                    [
-                        'actions' => ['logout', 'index', 'download', 'view'],
+                     [
                         'allow' => true,
                         'roles' => ['@'],
-                    ],
-
-                    [
-                        'actions' => ['create', 'update', 'delete'],
-                        'allow' => true,
-                        'matchCallback' => function($rule, $action){
-                            if (in_array(Yii::$app->user->identity->role, ['admin']))
-                                return true;
-                            return false;
-                        }
                     ],
                 ],
             ],
@@ -65,7 +50,7 @@ class ThongbaoquyetdinhController extends Controller
     {
         $searchModel = new ThongbaoQuyetdinhSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
-        if (in_array(Yii::$app->user->identity->role, ['admin', 'trưởng bộ môn']))
+        if (in_array(Yii::$app->user->identity->role, [!empty(Yii::$app->user->identity->getDanhsachquyen(Yii::$app->controller->id))]))
             $btn_them =  Html::a('<span class="glyphicon glyphicon-plus"></span> Thêm mới', ['create'], ['class' => 'btn btn-success']);
         else
             $btn_them = '';

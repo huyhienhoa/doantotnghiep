@@ -12,7 +12,8 @@ use yii\web\NotFoundHttpException;
 use yii\web\UploadedFile;
 use yii\helpers\Html;
 use yii\base\ErrorException;
-
+use yii\filters\AccessControl;
+use yii\filters\VerbFilter;
 class BackuprestoreController extends Controller {
 
     public $menu = [];
@@ -22,9 +23,26 @@ class BackuprestoreController extends Controller {
     public $_path = null;
     public $back_temp_file = 'db_backup_';
 	
-	public function actions()
+	 public function behaviors()
     {
-		//
+        return [
+             'access' => [
+                'class' => AccessControl::className(),
+                'rules' => [
+                    [
+                        'actions' => Yii::$app->user->identity->getDanhsachquyen(Yii::$app->controller->id),
+                        'allow' => (!empty(Yii::$app->user->identity->getDanhsachquyen(Yii::$app->controller->id)))?true:false,
+                        'roles' => ['@'],
+                    ],
+                ],
+            ],
+            'verbs' => [
+                'class' => VerbFilter::className(),
+                'actions' => [
+                    'delete' => ['POST'],
+                ],
+            ],
+        ];
     }
 
     protected function getPath() {

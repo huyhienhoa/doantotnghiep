@@ -41,7 +41,7 @@ class ChuongtrinhdaotaoSearch extends Chuongtrinhdaotao
      */
     public function search($params)
     {
-        $query = Chuongtrinhdaotao::find();
+        $query = (is_null(Yii::$app->user->identity->khoa_id))?Chuongtrinhdaotao::find():Chuongtrinhdaotao::find()->where(['khoa_id'=>Yii::$app->user->identity->khoa_id]);
 
         // add conditions that should always apply here
 

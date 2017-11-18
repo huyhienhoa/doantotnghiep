@@ -20,39 +20,19 @@ class DecuonghocphanController extends Controller
     /**
      * @inheritdoc
      */
-    public function behaviors()
+     public function behaviors()
     {
         return [
-            'access' => [
+             'access' => [
                 'class' => AccessControl::className(),
                 'rules' => [
                     [
-                        'actions' => ['login', 'error'],
-                        'allow' => true,
-                    ],
-                    [
-                        'actions' => ['logout', 'index', 'download', 'view'],
-                        'allow' => true,
-//                        'roles' => ['@'],
-                        'matchCallback' => function($rule, $action) {
-                            if (in_array(Yii::$app->user->identity->role, ['trưởng bộ môn', 'trưởng khoa', 'giảng viên']))
-                                return true;
-                            return false;
-                        }
-                    ],
-
-                    [
-                        'actions' => ['create', 'update', 'delete'],
-                        'allow' => true,
-                        'matchCallback' => function($rule, $action){
-                            if (in_array(Yii::$app->user->identity->role, ['trưởng bộ môn']))
-                                return true;
-                            return false;
-                        }
+                        'actions' => Yii::$app->user->identity->getDanhsachquyen(Yii::$app->controller->id),
+                        'allow' => (!empty(Yii::$app->user->identity->getDanhsachquyen(Yii::$app->controller->id)))?true:false,
+                        'roles' => ['@'],
                     ],
                 ],
             ],
-
             'verbs' => [
                 'class' => VerbFilter::className(),
                 'actions' => [
@@ -61,7 +41,6 @@ class DecuonghocphanController extends Controller
             ],
         ];
     }
-
     /**
      * Lists all Decuonghocphan models.
      * @return mixed
@@ -70,7 +49,7 @@ class DecuonghocphanController extends Controller
     {
         $searchModel = new DecuonghocphanSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
-        if (in_array(Yii::$app->user->identity->role, ['admin', 'trưởng bộ môn']))
+        if (in_array(Yii::$app->user->identity->role, [!empty(Yii::$app->user->identity->getDanhsachquyen(Yii::$app->controller->id))]))
             $btn_them =  Html::a('<span class="glyphicon glyphicon-plus"></span> Thêm mới', ['create'], ['class' => 'btn btn-success']);
         else
             $btn_them = '';

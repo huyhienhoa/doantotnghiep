@@ -11,17 +11,21 @@ $this->title = $name;
 ?>
 <div class="site-error">
 
-    <h1><?= Html::encode($this->title) ?></h1>
+    <h1>
+        <?php if ($this->title == 'Forbidden (#403)') ?>
+            Truy cập bị từ chối
+        <?php elseif ($this->title == 'Not Found (#404)'): ?>
+            Không tìm thấy trang
+        <?php else: ?>
+            <?= $this->title ?>
+        <?php endif; ?>
+            
+    </h1>
 
     <div class="alert alert-danger">
         <?= nl2br(Html::encode($message)) ?>
     </div>
 
-    <p>
-        The above error occurred while the Web server was processing your request.
-    </p>
-    <p>
-        Please contact us if you think this is a server error. Thank you.
-    </p>
+    
 
 </div>

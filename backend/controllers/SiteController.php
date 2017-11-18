@@ -2,6 +2,7 @@
 namespace backend\controllers;
 
 use common\models\Loaitailieu;
+use common\models\User;
 use frontend\models\PasswordResetRequestForm;
 use frontend\models\ResetPasswordForm;
 use Yii;
@@ -28,20 +29,20 @@ class SiteController extends Controller
                 'class' => AccessControl::className(),
                 'rules' => [
                     [
-                        'actions' => ['login', 'error', 'request-password-reset', 'reset-password'],
-                        'allow' => true,
-                    ],
-                    [
-                        'actions' => ['logout', 'index'],
                         'allow' => true,
                         'roles' => ['@'],
+                    ],
+                    [
+                        'actions' => ['login'],
+                        'allow' => true,
+                        'roles' => ['?']
                     ],
                 ],
             ],
             'verbs' => [
                 'class' => VerbFilter::className(),
                 'actions' => [
-                    'logout' => ['post'],
+
                 ],
             ],
         ];
@@ -66,12 +67,7 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
-        if (in_array(Yii::$app->user->identity->role,['admin'])){
-            return $this->render('giaodienadmin');
-        }
-//        if (in_array(Yii::$app->user->identity->role,['trưởng khoa'])){
-//            return $this->render('giaodientruongkhoa');
-//        }
+    
         $loaitailieus = Loaitailieu::find()->all();
         return $this->render('index',
             [
@@ -111,7 +107,26 @@ class SiteController extends Controller
 
         return $this->goHome();
     }
+    public function actionChangepass()
+    {
 
+        if (Yii::$app->user->isGuest) 
+            return $this->redirect(['login']);
+        
+        $model = User::findOne(Yii::$app->user->identity->id);
+        $model->setScenario('changepass');
+        $model->password_hash = '';
+        $model->old_password = '';
+        $model->password_hash_confirm = '';
+        if ($model->load(Yii::$app->request->post()) && $model->validate()) {
+            $model->password_hash = Yii::$app->security->generatePasswordHash($model->password_hash);
+            $model->auth_key = Yii::$app->security->generateRandomString();
+            if ($model->save(false))
+                return $this->redirect(['logout']);
+
+        }
+        return $this->render('changepass',['model'=>$model]);
+    }
     public function actionRequestPasswordReset()
     {
         $model = new PasswordResetRequestForm();
@@ -139,9 +154,6 @@ class SiteController extends Controller
      */
     public function actionResetPassword($token)
     {
-//        if($_POST['password_check']);
-//        var_dump($_POST['password']);exit;
-
         try {
             $model = new ResetPasswordForm($token);
         } catch (InvalidParamException $e) {

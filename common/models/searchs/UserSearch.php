@@ -19,7 +19,7 @@ class UserSearch extends User
     {
         return [
             [['id', 'status', 'created_at', 'updated_at'], 'integer'],
-            [['username', 'auth_key', 'password_hash', 'password_reset_token', 'email', 'role'], 'safe'],
+            [['username', 'auth_key', 'password_hash', 'password_reset_token', 'email', 'role','khoa_id','roles_id'], 'safe'],
         ];
     }
 
@@ -41,7 +41,7 @@ class UserSearch extends User
      */
     public function search($params)
     {
-        $query = User::find();
+        $query = (is_null(Yii::$app->user->identity->khoa_id))?User::find():User::find()->where(['khoa_id'=>Yii::$app->user->identity->khoa_id]);
 
         // add conditions that should always apply here
 
