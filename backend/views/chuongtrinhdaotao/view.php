@@ -15,7 +15,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
-        <?= Html::a('<span class="glyphicon glyphicon-edit"></span> Sủa', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
+        <?= Html::a('<span class="glyphicon glyphicon-edit"></span> Sửa', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
         <?= Html::a('<span class="glyphicon glyphicon-trash"></span> Xóa', ['delete', 'id' => $model->id], [
             'class' => 'btn btn-danger',
             'data' => [
@@ -28,7 +28,6 @@ $this->params['breadcrumbs'][] = $this->title;
     <?= DetailView::widget([
         'model' => $model,
         'attributes' => [
-            'id',
             'name',
             [
                 'attribute'=>'ngaybanhanh',
@@ -37,9 +36,10 @@ $this->params['breadcrumbs'][] = $this->title;
             ],
             'cosodaotao',
             'quyetdinhso',
-            'created_at',
-            'updated_at',
-            'filedinhkem',
+            [
+                'attribute'=>'filedinhkem',
+                'value'=> common\models\myFuncs::checkExtension($model->filedinhkem)
+            ],
             [
                 'attribute'=>'trinhdo_id',
                 'label'=>'Trình độ',

@@ -21,16 +21,7 @@ use common\models\Namhoc;
         <div class="col-md-4">
             <?= $form->field($model, 'name')->textInput(['maxlength' => true]) ?>
         </div>
-        <div class="col-md-4">
-            <?= $form->field($model, 'khoa_id')->dropDownList(
-                ArrayHelper::map(Khoa::find()->all(),'id','tenkhoa'),['prompt'=>'Chọn...']
-            ) ?>
-        </div>
-        <div class="col-md-4">
-            <?= $form->field($model, 'namhoc_id')->dropDownList(
-                ArrayHelper::map(Namhoc::find()->all(),'id','name'),['prompt'=>'Chọn...']
-            ) ?>
-        </div>
+
         <div class="col-md-4">
             <?= $form->field($model, 'ngaydk')->widget(DatePicker::className(), [
                 'pluginOptions' => [

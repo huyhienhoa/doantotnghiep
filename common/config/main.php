@@ -11,4 +11,10 @@ return [
         ],
     ],
     'timeZone' => 'Asia/Ho_Chi_Minh',
+    'modules'=>[
+        'pdfjs' => [
+            'class' => '\yii2assets\pdfjs\Module',
+        ],
+    ],
+
 ];

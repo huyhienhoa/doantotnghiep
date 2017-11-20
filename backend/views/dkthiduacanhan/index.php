@@ -20,42 +20,55 @@ $this->params['breadcrumbs'][] = $this->title;
         <?= Html::a('<span class="glyphicon glyphicon-plus"></span> Thêm mới', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
-    <?= GridView::widget([
+    <?= \kartik\grid\GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
+        'summary'=>'Trang {page}/{pageCount}. Số lượng bản ghi: {totalCount}',
+        'toolbar'=> [
+            ['content'=>
+                '{export}'
+            ],
+        ],
+        'responsive' => true,
+        'hover' => true,
+        'panel' => [
+            'heading' => '<h3 class="panel-title">Đăng ký thi đua cá nhân</h3>',
+            'type' => 'primary',
+            'showFooter' => false
+        ],
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
-            'id',
+//            'id',
             'name',
 //            'khoa_id',
 //            'namhoc_id',
-            [
-                'attribute'=>'khoa_id',
-                'label'=>'Khoa',
-                'value'=>function($data){
-                    return $data->khoa->tenkhoa;
-                },
-                'filter'=>Html::activeDropDownList($searchModel,
-                    'khoa_id' ,
-                    \yii\helpers\ArrayHelper::map(\common\models\Khoa::find()->all(),
-                        'id','tenkhoa' ),
-                    ['prompt'=>'Tất cả','class'=>'form-control']
-                ),
-            ],
-            [
-                'attribute'=>'namhoc_id',
-                'label'=>'Năm học',
-                'value'=>function($data){
-                    return $data->namhoc->name;
-                },
-                'filter'=>Html::activeDropDownList($searchModel,
-                    'namhoc_id' ,
-                    \yii\helpers\ArrayHelper::map(\common\models\Namhoc::find()->all(),
-                        'id','name' ),
-                    ['prompt'=>'Tất cả','class'=>'form-control']
-                ),
-            ],
+//            [
+//                'attribute'=>'khoa_id',
+//                'label'=>'Khoa',
+//                'value'=>function($data){
+//                    return $data->khoa->tenkhoa;
+//                },
+//                'filter'=>Html::activeDropDownList($searchModel,
+//                    'khoa_id' ,
+//                    \yii\helpers\ArrayHelper::map(\common\models\Khoa::find()->all(),
+//                        'id','tenkhoa' ),
+//                    ['prompt'=>'Tất cả','class'=>'form-control']
+//                ),
+//            ],
+//            [
+//                'attribute'=>'namhoc_id',
+//                'label'=>'Năm học',
+//                'value'=>function($data){
+//                    return $data->namhoc->name;
+//                },
+//                'filter'=>Html::activeDropDownList($searchModel,
+//                    'namhoc_id' ,
+//                    \yii\helpers\ArrayHelper::map(\common\models\Namhoc::find()->all(),
+//                        'id','name' ),
+//                    ['prompt'=>'Tất cả','class'=>'form-control']
+//                ),
+//            ],
 
             [
                 'attribute'=>'ngaydk',
@@ -67,7 +80,8 @@ $this->params['breadcrumbs'][] = $this->title;
 //            'ngaydk',
             //'created_at',
             //'updated_at',
-            //'hoten',
+            'hoten',
+            'chucvu',
             //'ngaysinh',
             //'CTNA_GDLT',
             //'CTNA_HDTH',

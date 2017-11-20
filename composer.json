@@ -24,7 +24,10 @@
         "kartik-v/yii2-grid": "@dev",
         "kartik-v/yii2-krajee-base": "@dev",
         "kartik-v/yii2-widget-fileinput": "@dev",
-        "chrisb34/yii2-report-grid": "@dev"
+        "chrisb34/yii2-report-grid": "@dev",
+        "kartik-v/yii2-mpdf": "*",
+        "yii2assets/yii2-pdfjs": ">=1.0"
+
 
     },
     "require-dev": {

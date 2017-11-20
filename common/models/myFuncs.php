@@ -13,7 +13,7 @@ use common\models\Hinhanhhanghoa;
 use yii\helpers\Html;
 use yii\helpers\Url;
 use yii\swiftmailer\Mailer;
-
+use yii;
 class myFuncs
 {
     public static function dayMonthYeartoYearMonthDay($ngay = "31/12/2016"){
@@ -110,6 +110,23 @@ class myFuncs
 
     }
 
-
+    public static function checkExtension($input)
+    {
+        $ext = substr($input,strlen($input)- 3,strlen($input));
+        switch ($ext) {
+            case 'pdf':
+                echo \yii2assets\pdfjs\PdfJs::widget([
+                    'url'=> Yii::$app->request->baseUrl.'/files/'.$input
+                ]);
+                break;
+            case 'jpg':
+            case 'png':
+            case 'gif':
+                echo \yii\bootstrap\Html::img(Yii::$app->request->baseUrl.'/files/'.$input,['class'=>'img-responsive']);
+                break;
+            default:
+                break;
+        }
+    }
 
 }

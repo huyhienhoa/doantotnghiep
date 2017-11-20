@@ -21,16 +21,6 @@ use kartik\date\DatePicker;
             <?= $form->field($model, 'name')->textInput(['maxlength' => true]) ?>
         </div>
         <div class="col-md-4">
-            <?= $form->field($model, 'namhoc_id')->dropDownList(
-                ArrayHelper::map(Namhoc::find()->all(),'id','name'),['prompt'=>'Chọn...']
-            ) ?>
-        </div>
-        <div class="col-md-4">
-            <?= $form->field($model, 'khoa_id')->dropDownList(
-                ArrayHelper::map(Khoa::find()->all(),'id','tenkhoa'),['prompt'=>'Chọn...']
-            ) ?>
-        </div>
-        <div class="col-md-4">
             <?= $form->field($model, 'ngaydk')->widget(DatePicker::className(), [
                 'pluginOptions' => [
                     'autoclose'=>'true',
@@ -42,10 +32,10 @@ use kartik\date\DatePicker;
             ]) ?>
         </div>
         <div class="col-md-4">
-            <?= $form->field($model, 'sogiangvien')->textInput(['type'=> 'number']) ?>
+            <?= $form->field($model, 'sogiangvien')->textInput(['type'=> 'number', 'min' => 1]) ?>
         </div>
         <div class="col-md-4">
-            <?= $form->field($model, 'sogiangviencomat')->textInput(['type' => 'number']) ?>
+            <?= $form->field($model, 'sogiangviencomat')->textInput(['type' => 'number', 'min' => 1]) ?>
         </div>
 
     </div>

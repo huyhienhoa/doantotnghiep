@@ -8,6 +8,7 @@ use common\models\searchs\DkthiduacanhanSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use kartik\mpdf\Pdf;
 
 /**
  * DkthiduacanhanController implements the CRUD actions for Dkthiduacanhan model.
@@ -43,7 +44,42 @@ class DkthiduacanhanController extends Controller
             'dataProvider' => $dataProvider,
         ]);
     }
+    public function actionMauthidua($id){
+        return $this->render('mauthidua', [
+            'model' => $this->findModel($id),
+        ]);
+    }
+    public function actionExportpdf($id){
+        $content = $this->renderPartial('../dkthiduacanhan/mauthidua', ['model' => $this->findModel($id),]);
 
+        // setup kartik\mpdf\Pdf component
+        $pdf = new Pdf([
+            // set to use core fonts only
+            'mode' => Pdf::MODE_UTF8,
+            // A4 paper format
+            'format' => Pdf::FORMAT_A4,
+            // portrait orientation
+            'orientation' => Pdf::ORIENT_PORTRAIT,
+            // stream to browser inline
+            'destination' => Pdf::DEST_BROWSER,
+            // your html content input
+            'content' => $content,
+            // format content from your own css file if needed or use the
+            // enhanced bootstrap css built by Krajee for mPDF formatting
+            'cssFile' => '@vendor/kartik-v/yii2-mpdf/assets/kv-mpdf-bootstrap.min.css',
+            // any css to be embedded if
+            'cssInline' => 'body{font-size:14px}',
+            // set mPDF properties on the fly
+            // call mPDF methods on the fly
+            'methods' => [
+                'SetHeader'=>['Mẫu đăng ký thi đua cá nhân']
+            ]
+        ]);
+
+        // return the pdf output as per the destination setting
+        return $pdf->render();
+
+    }
     /**
      * Displays a single Dkthiduacanhan model.
      * @param integer $id

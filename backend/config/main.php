@@ -17,6 +17,9 @@ return [
         'gridview' =>  [
             'class' => '\kartik\grid\Module'
         ],
+        'pdfjs' => [
+            'class' => '\yii2assets\pdfjs\Module',
+            ],
         'db-manager' => [
             'class' => 'bs\dbManager\Module',
             // path to directory for the dumps
